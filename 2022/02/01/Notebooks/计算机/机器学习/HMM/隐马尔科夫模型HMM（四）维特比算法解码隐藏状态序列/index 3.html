@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列 | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列 在本篇我们会讨论HMM模型最后一个问题的求解，即即给定模型和观测序列，求给定观测序列条件下，最可能出现的对应的隐藏状态序列。在阅读本篇前，建议先阅读这个系列的第一篇以熟悉HMM模型。 HMM模型的解码问题最常用的算法是维特比算法，当然也有其他的算法可以求解这个问题。同时维特比算法是一个通用的求序列最短路径的动态规划算法，也可以用于很多其他问题，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列">
+<meta property="og:url" content="http://conansteve.github.io/2022/02/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/HMM/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8BHMM%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95%E8%A7%A3%E7%A0%81%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%BA%8F%E5%88%97/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列 在本篇我们会讨论HMM模型最后一个问题的求解，即即给定模型和观测序列，求给定观测序列条件下，最可能出现的对应的隐藏状态序列。在阅读本篇前，建议先阅读这个系列的第一篇以熟悉HMM模型。 HMM模型的解码问题最常用的算法是维特比算法，当然也有其他的算法可以求解这个问题。同时维特比算法是一个通用的求序列最短路径的动态规划算法，也可以用于很多其他问题，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://conansteve.github.io/img/pages/art/7.jpg">
+<meta property="article:published_time" content="2022-01-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-30T15:13:56.757Z">
+<meta property="article:author" content="陌上人如玉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/pages/art/7.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://conansteve.github.io/2022/02/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/HMM/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8BHMM%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95%E8%A7%A3%E7%A0%81%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%BA%8F%E5%88%97/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-03-30 23:13:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/pages/art/7.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陌上人如玉的时光机</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-31T16:00:00.000Z" title="发表于 2022-02-01 00:00:00">2022-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-30T15:13:56.757Z" title="更新于 2022-03-30 23:13:56">2022-03-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列</p>
+<p>在本篇我们会讨论HMM模型最后一个问题的求解，即即给定模型和观测序列，求给定观测序列条件下，最可能出现的对应的隐藏状态序列。在阅读本篇前，建议先阅读这个系列的第一篇以熟悉HMM模型。</p>
+<p>HMM模型的解码问题最常用的算法是维特比算法，当然也有其他的算法可以求解这个问题。同时维特比算法是一个通用的求序列最短路径的动态规划算法，也可以用于很多其他问题，比如之前讲到的<a target="_blank" rel="noopener" href="http://www.cnblogs.com/pinard/p/6677078.html">文本挖掘的分词原理</a>中我们讲到了单独用维特比算法来做分词。</p>
+<p>本文关注于用维特比算法来解码HMM的的最可能隐藏状态序列。</p>
+<p>在HMM模型的解码问题中，给定模型$\lambda &#x3D; (A, B, \Pi)$和观测序列$O &#x3D;{o_1,o_2,…o_T}$，求给定观测序列O条件下，最可能出现的对应的状态序列$I^*&#x3D; {i_1^*,i_2^*,…i_T^<em>}$,即$P(I^</em>|O)$要最大化。</p>
+<p>一个可能的近似解法是求出观测序列$O$在每个时刻$t$最可能的隐藏状态$i_t^*$然后得到一个近似的隐藏状态序列$I^*&#x3D; {i_1^*,i_2^*,…i_T^<em>}$。要这样近似求解不难，利用<a target="_blank" rel="noopener" href="http://www.cnblogs.com/pinard/p/6955871.html">隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率</a>中第五节的定义：在给定模型$\lambda$和观测序列$O$时，在时刻$t$处于状态$q_i$的概率是$\gamma_t(i)$，这个概率可以通过HMM的前向算法与后向算法计算。这样我们有：$$i_t^</em> &#x3D; arg \max_{1 \leq i \leq N}[\gamma_t(i)], ; t &#x3D;1,2,…T$$</p>
+<p>近似算法很简单，但是却不能保证预测的状态序列是整体是最可能的状态序列，因为预测的状态序列中某些相邻的隐藏状态可能存在转移概率为0的情况。</p>
+<p>而维特比算法可以将HMM的状态序列作为一个整体来考虑，避免近似算法的问题，下面我们来看看维特比算法进行HMM解码的方法。</p>
+<p>既然是动态规划算法，那么就需要找到合适的局部状态，以及局部状态的递推公式。在HMM中，维特比算法定义了两个局部状态用于递推。</p>
+<p>第一个局部状态是在时刻$t$隐藏状态为$i$所有可能的状态转移路径$i_1,i_2,…i_t$中的概率最大值。记为$\delta_t(i)$:$$\delta_t(i) &#x3D; \max_{i_1,i_2,…i_{t-1}};P(i_t&#x3D;i, i_1,i_2,…i_{t-1},o_t,o_{t-1},…o_1|\lambda),; i &#x3D;1,2,…N$$</p>
+<p>由$\delta_t(i)$的定义可以得到$\delta$的递推表达式：$$\begin{align} \delta_{t+1}(i) &amp; &#x3D; \max_{i_1,i_2,…i_{t}};P(i_{t+1}&#x3D;i, i_1,i_2,…i_{t},o_{t+1},o_{t},…o_1|\lambda) \ &amp; &#x3D; \max_{1 \leq j \leq N};[\delta_t(j)a_{ji}]b_i(o_{t+1})\end{align}$$</p>
+<p>第二个局部状态由第一个局部状态递推得到。我们定义在时刻$t$隐藏状态为$i$的所有单个状态转移路径$(i_1,i_2,…,i_{t-1},i)$中概率最大的转移路径中第$t-1$个节点的隐藏状态为$\Psi_t(i)$,其递推表达式可以表示为：$$\Psi_t(i) &#x3D; arg ; \max_{1 \leq j \leq N};[\delta_{t-1}(j)a_{ji}]$$</p>
+<p>有了这两个局部状态，我们就可以从时刻0一直递推到时刻$T$，然后利用$\Psi_t(i)$记录的前一个最可能的状态节点回溯，直到找到最优的隐藏状态序列。</p>
+<p>现在我们来总结下维特比算法的流程：</p>
+<p>输入：HMM模型$\lambda &#x3D; (A, B, \Pi)$，观测序列$O&#x3D;(o_1,o_2,…o_T)$</p>
+<p>输出：最有可能的隐藏状态序列$I^*&#x3D; {i_1^*,i_2^*,…i_T^*}$</p>
+<ol start="2">
+<li><p>进行动态规划递推时刻$t&#x3D;2,3,…T$时刻的局部状态：$$\delta_{t}(i) &#x3D; \max_{1 \leq j \leq N};[\delta_{t-1}(j)a_{ji}]b_i(0_{t}),;i&#x3D;1,2…N$$$$\Psi_t(i) &#x3D; arg ; \max_{1 \leq j \leq N};[\delta_{t-1}(j)a_{ji}],;i&#x3D;1,2…N$$</p>
+</li>
+<li><p>计算时刻$T$最大的$\delta_{T}(i)$,即为最可能隐藏状态序列出现的概率。计算时刻$T$最大的$\Psi_t(i)$,即为时刻$T$最可能的隐藏状态。$$P* &#x3D; \max_{1 \leq j \leq N}\delta_{T}(i)$$$$i_T^* &#x3D; arg ; \max_{1 \leq j \leq N};[\delta_{T}(i)]$$</p>
+</li>
+<li><p>利用局部状态$\Psi(i)$开始回溯。对于$t&#x3D;T-1,T-2,…,1$：$$i_t^* &#x3D; \Psi_{t+1}(i_{t+1}^*)$$</p>
+</li>
+</ol>
+<p>最终得到最有可能的隐藏状态序列$I^*&#x3D; {i_1^*,i_2^*,…i_T^*}$</p>
+<p>我们的观察集合是:$$V&#x3D;{红，白}，M&#x3D;2$$</p>
+<p>我们的状态集合是：$$Q &#x3D;{盒子1，盒子2，盒子3}， N&#x3D;3 $$</p>
+<p>而观察序列和状态序列的长度为3.</p>
+<p>初始状态分布为：$$\Pi &#x3D; (0.2,0.4,0.4)^T$$</p>
+<p>状态转移概率分布矩阵为：</p>
+<p>$$A &#x3D; \left( \begin{array} {ccc} 0.5 &amp; 0.2 &amp; 0.3 \ 0.3 &amp; 0.5 &amp; 0.2 \ 0.2 &amp; 0.3 &amp;0.5 \end{array} \right) $$</p>
+<p>观测状态概率矩阵为：</p>
+<p>$$B &#x3D; \left( \begin{array} {ccc} 0.5 &amp; 0.5 \ 0.4 &amp; 0.6 \ 0.7 &amp; 0.3 \end{array} \right) $$</p>
+<p>球的颜色的观测序列:$$O&#x3D;{红，白，红}$$</p>
+<p>按照我们上一节的维特比算法，首先需要得到三个隐藏状态在时刻1时对应的各自两个局部状态，此时观测状态为1：</p>
+<p>$$\delta_1(1) &#x3D; \pi_1b_1(o_1) &#x3D; 0.2 \times 0.5 &#x3D; 0.1$$</p>
+<p>$$\delta_1(2) &#x3D; \pi_2b_2(o_1) &#x3D; 0.4 \times 0.4 &#x3D; 0.16$$</p>
+<p>$$\delta_1(3) &#x3D; \pi_3b_3(o_1) &#x3D; 0.4 \times 0.7 &#x3D; 0.28$$</p>
+<p>$$\Psi_1(1)&#x3D;\Psi_1(2) &#x3D;\Psi_1(3) &#x3D;0$$</p>
+<p>现在开始递推三个隐藏状态在时刻2时对应的各自两个局部状态，此时观测状态为2：</p>
+<p>$$\delta_2(1) &#x3D; \max_{1\leq j \leq 3}[\delta_1(j)a_{j1}]b_1(o_2) &#x3D; \max_{1\leq j \leq 3}[0.1 \times 0.5, 0.16 \times 0.3, 0.28\times 0.2] \times 0.5 &#x3D; 0.028$$</p>
+<p>$$\Psi_2(1)&#x3D;3$$</p>
+<p>$$\delta_2(2) &#x3D; \max_{1\leq j \leq 3}[\delta_1(j)a_{j2}]b_2(o_2) &#x3D; \max_{1\leq j \leq 3}[0.1 \times 0.2, 0.16 \times 0.5, 0.28\times 0.3] \times 0.6 &#x3D; 0.0504$$</p>
+<p>$$\Psi_2(2)&#x3D;3$$</p>
+<p>$$\delta_2(3) &#x3D; \max_{1\leq j \leq 3}[\delta_1(j)a_{j3}]b_3(o_2) &#x3D; \max_{1\leq j \leq 3}[0.1 \times 0.3, 0.16 \times 0.2, 0.28\times 0.5] \times 0.3 &#x3D; 0.042$$</p>
+<p>$$\Psi_2(3)&#x3D;3$$</p>
+<p>继续递推三个隐藏状态在时刻3时对应的各自两个局部状态，此时观测状态为1：</p>
+<p>$$\delta_3(1) &#x3D; \max_{1\leq j \leq 3}[\delta_2(j)a_{j1}]b_1(o_3) &#x3D; \max_{1\leq j \leq 3}[0.028 \times 0.5, 0.0504 \times 0.3, 0.042\times 0.2] \times 0.5 &#x3D; 0.00756$$</p>
+<p>$$\Psi_3(1)&#x3D;2$$</p>
+<p>$$\delta_3(2) &#x3D; \max_{1\leq j \leq 3}[\delta_2(j)a_{j2}]b_2(o_3) &#x3D; \max_{1\leq j \leq 3}[0.028 \times 0.2, 0.0504\times 0.5, 0.042\times 0.3] \times 0.4 &#x3D; 0.01008$$</p>
+<p>$$\Psi_3(2)&#x3D;2$$</p>
+<p>$$\delta_3(3) &#x3D; \max_{1\leq j \leq 3}[\delta_2(j)a_{j3}]b_3(o_3) &#x3D; \max_{1\leq j \leq 3}[0.028 \times 0.3, 0.0504 \times 0.2, 0.042\times 0.5] \times 0.7 &#x3D; 0.0147$$</p>
+<p>$$\Psi_3(3)&#x3D;3$$</p>
+<p>此时已经到最后的时刻，我们开始准备回溯。此时最大概率为$\delta_3(3)$,从而得到$i_3^* &#x3D;3$</p>
+<p>由于$\Psi_3(3)&#x3D;3$,所以$i_2^* &#x3D;3$, 而又由于$\Psi_2(3)&#x3D;3$,所以$i_1^* &#x3D;3$。从而得到最终的最可能的隐藏状态序列为：$(3,3,3)$</p>
+<p>如果大家看过之前写的<a target="_blank" rel="noopener" href="http://www.cnblogs.com/pinard/p/6677078.html">文本挖掘的分词原理</a>中的维特比算法，就会发现这两篇之中的维特比算法稍有不同。主要原因是在中文分词时，我们没有观察状态和隐藏状态的区别，只有一种状态。但是维特比算法的核心是定义动态规划的局部状态与局部递推公式，这一点在中文分词维特比算法和HMM的维特比算法是相同的，也是维特比算法的精华所在。</p>
+<p>维特比算法也是寻找序列最短路径的一个通用方法，和dijkstra算法有些类似，但是dijkstra算法并没有使用动态规划，而是贪心算法。同时维特比算法仅仅局限于求序列最短路径，而dijkstra算法是通用的求最短路径的方法。</p>
+<p>（欢迎转载，转载请注明出处。欢迎沟通交流： <a href="mailto:&#108;&#x69;&#x75;&#106;&#x69;&#97;&#110;&#x70;&#105;&#x6e;&#x67;&#45;&#x6f;&#107;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#111;&#109;">&#108;&#x69;&#x75;&#106;&#x69;&#97;&#110;&#x70;&#105;&#x6e;&#x67;&#45;&#x6f;&#107;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#111;&#109;</a>）</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2022/02/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/HMM/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8BHMM%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95%E8%A7%A3%E7%A0%81%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%BA%8F%E5%88%97/">http://conansteve.github.io/2022/02/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/HMM/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8BHMM%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95%E8%A7%A3%E7%A0%81%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%BA%8F%E5%88%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://conansteve.github.io" target="_blank">陌上人如玉的时光机</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/pages/art/7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/02/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Picgo/"><img class="prev-cover" src="/img/pages/art/11.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Picgo</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陌上人如玉</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/conansteve"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/conansteve" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:conansteve@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/conansteve" target="_blank" title="Github"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://github.com/conansteve" target="_blank" title="Github"><i class="icon-qq-line"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/BlogWebsite/build-my-blog-by-hexo/" title="通过hexo搭建个人博客"><img src="/img/pages/art/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通过hexo搭建个人博客"/></a><div class="content"><a class="title" href="/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/BlogWebsite/build-my-blog-by-hexo/" title="通过hexo搭建个人博客">通过hexo搭建个人博客</a><time datetime="2022-04-01T02:00:00.000Z" title="发表于 2022-04-01 10:00:00">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/json-format-print/" title="json格式化输出"><img src="/img/pages/gf/qljst.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="json格式化输出"/></a><div class="content"><a class="title" href="/2022/03/31/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/json-format-print/" title="json格式化输出">json格式化输出</a><time datetime="2022-03-30T16:00:00.000Z" title="发表于 2022-03-31 00:00:00">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/BlogWebsite/hexo-theme/" title="个人喜欢的hexo主题"><img src="/img/pages/art/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="个人喜欢的hexo主题"/></a><div class="content"><a class="title" href="/2022/03/31/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/BlogWebsite/hexo-theme/" title="个人喜欢的hexo主题">个人喜欢的hexo主题</a><time datetime="2022-03-30T16:00:00.000Z" title="发表于 2022-03-31 00:00:00">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/30/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/Linux%E5%91%BD%E4%BB%A4/calc-file-size-and-num/" title="终端统计文件夹信息"><img src="/img/pages/art/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="终端统计文件夹信息"/></a><div class="content"><a class="title" href="/2022/03/30/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/Linux%E5%91%BD%E4%BB%A4/calc-file-size-and-num/" title="终端统计文件夹信息">终端统计文件夹信息</a><time datetime="2022-03-30T11:43:00.000Z" title="发表于 2022-03-30 19:43:00">2022-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/26/hello-world/" title="Hello World"><img src="/img/pages/art/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/03/26/hello-world/" title="Hello World">Hello World</a><time datetime="2022-03-26T14:41:49.286Z" title="发表于 2022-03-26 22:41:49">2022-03-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陌上人如玉</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's timemachine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
