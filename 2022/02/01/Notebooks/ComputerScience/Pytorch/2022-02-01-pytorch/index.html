@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Pytorch | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="环境安装 windows PyTorch环境配置及安装 1conda install pytorch torchvision torchaudio torchtext cudatoolkit&#x3D;10.1 -c pytorch windows下安装anaconda+pytorch1.0+cuda10+配置pycharm windows10安装cuda  显卡驱动版本一定要大于cudatoolkit版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch">
+<meta property="og:url" content="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Pytorch/2022-02-01-pytorch/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="环境安装 windows PyTorch环境配置及安装 1conda install pytorch torchvision torchaudio torchtext cudatoolkit&#x3D;10.1 -c pytorch windows下安装anaconda+pytorch1.0+cuda10+配置pycharm windows10安装cuda  显卡驱动版本一定要大于cudatoolkit版本">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://conansteve.github.io/img/art/7.jpg">
+<meta property="article:published_time" content="2022-02-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-07T10:33:21.000Z">
+<meta property="article:author" content="陌上人如玉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/art/7.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Pytorch/2022-02-01-pytorch/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Pytorch',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-07 18:33:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_3298638_9mmiq161yi6.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1140697_dxory92pb0h.js"><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">69</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/art/7.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陌上人如玉的时光机</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Pytorch</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-01T02:00:00.000Z" title="Created 2022-02-01 10:00:00">2022-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-07T10:33:21.000Z" title="Updated 2022-05-07 18:33:21">2022-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Pytorch/">Pytorch</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">912</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Pytorch"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>环境安装</h1>
+<h2 id="windows-2">windows</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhouzhiyao/p/11784055.html">PyTorch环境配置及安装</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio torchtext cudatoolkit=10.1 -c pytorch</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ha_ha_ha233/article/details/87475799">windows下安装anaconda+pytorch1.0+cuda10+配置pycharm</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/arxive/p/11198420.html">windows10安装cuda</a></p>
+<blockquote>
+<p>显卡驱动版本一定要大于cudatoolkit版本<br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/wanzhen4330/article/details/81704474">Ubuntu16.04下cuda和cudnn的卸载和升级和环境配置</a><br>
+用pip卸载，conda卸载不干净<br>
+查看pytorch对应的cuda版本</p>
+</blockquote>
+<h2 id="Mac：">Mac：</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38105596/article/details/100926386">Mac版本安装Anaconda及使用教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/208315.htm">Macbook air m1安装python/anaconda全过程(图文)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42438346/article/details/120351207">Mac M1安装anaconda与pycharm与pytorch与jupyter</a></p>
+<p><code>torch.version.cuda</code></p>
+<h1>基础知识</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42380515/article/details/87885996">batch_size的理解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011501388/article/details/84062483">PyTorch之前向传播函数forward</a></p>
+<h2 id="参考资料">参考资料</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/b3c66a77e742">简书笔记01</a></p>
+<h1>接口</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiexu911/article/details/80820028">torch.unsqueeze()</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyq12345678/article/details/90268668">Dataloader重要参数与内部机制</a></p>
+<h2 id="torch-nn">torch.nn</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011501388/article/details/84062483">PyTorch之前向传播函数forward</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340453841">touch.nn.module</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011501388/article/details/84062483">forward</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dss_dssssd/article/details/82980222">torch.nn.Sequential()</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d8b77cc02410">torch.nn.Parameter()</a></p>
+<blockquote>
+<p>就是将Tensor变成Variable</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/63e7acc5e890">nn.Embedding</a></p>
+<p>输入维度：batchSize * SeqLen</p>
+<p>输出维度：batchSize * SeqLen * EmbeddingDim</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_45478865/article/details/104455978">torch.nn.LSTM()详解</a></p>
+<p>输入维度</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/45a26d278473">PyTorch中的nn.Conv1d与nn.Conv2d</a></p>
+<h2 id="torch-optim-lr-scheduler">torch.optim.lr_scheduler</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42305378/article/details/108740926">lr_scheduler.StepLR调整学习率机制</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qyhaill/article/details/103043637">torch.optim.lr_scheduler：调整学习率</a></p>
+<h2 id="优化器">优化器</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32698042">简单认识Adam优化器</a></p>
+<h2 id="loss">loss</h2>
+<h3 id="nllloss">nllloss</h3>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22210253/article/details/85229988">Pytorch详解NLLLoss和CrossEntropyLoss</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch, torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line">torch.random.manual_seed(<span class="number">2020</span>)</span><br><span class="line"><span class="built_in">input</span> = torch.randn(<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">input</span>)</span><br><span class="line"></span><br><span class="line">sm = nn.Softmax(dim =<span class="number">0</span>)</span><br><span class="line">x0=sm(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(x0)</span><br><span class="line"></span><br><span class="line">sm = nn.Softmax(dim =<span class="number">1</span>)</span><br><span class="line">x1=sm(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(x1)</span><br><span class="line"></span><br><span class="line">x2 = torch.log(x1)</span><br><span class="line"><span class="built_in">print</span>(x2)</span><br><span class="line"></span><br><span class="line">target = torch.tensor([<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(-(x2[<span class="number">0</span>,<span class="number">0</span>]+x2[<span class="number">1</span>,<span class="number">2</span>]+x2[<span class="number">2</span>,<span class="number">1</span>]+x2[<span class="number">3</span>,<span class="number">2</span>])/<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(F.nll_loss(x2, target))</span><br><span class="line"><span class="built_in">print</span>(F.nll_loss(x2, target, size_average = <span class="literal">False</span>))</span><br><span class="line"><span class="built_in">print</span>(F.nll_loss(x2, target, reduction = <span class="string">&#x27;sum&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># CrossEntropyLoss就是把以上Softmax–Log–NLLLoss合并成一步</span></span><br><span class="line">loss = nn.CrossEntropyLoss()</span><br><span class="line"><span class="built_in">print</span>(loss(<span class="built_in">input</span>, target))</span><br></pre></td></tr></table></figure>
+<h2 id="transformers">transformers</h2>
+<p><a target="_blank" rel="noopener" href="https://huggingface.co/transformers/">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38533896/article/details/86028509">Pytorch：transforms的二十二个方法</a></p>
+<h1>包</h1>
+<h2 id="Stanford-parser">Stanford parser</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010454729/article/details/88358932">NLP工具——stanford Parser使用手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/l919898756/article/details/81670228">2</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41733192/article/details/106589613">（Java）利用Stanford parser与多线程获取语句中名词集合工具实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/supakito/archive/2012/12/12/2814121.html">Stanford Parser 标记含义</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> stanfordcorenlp <span class="keyword">import</span> StanfordCoreNLP</span><br><span class="line">path = <span class="string">&#x27;../stanford-corenlp-4.2.2&#x27;</span></span><br><span class="line">nlp = StanfordCoreNLP(path, lang=<span class="string">&#x27;en&#x27;</span>)</span><br><span class="line">s = <span class="string">&#x27;Stanford University is located in California. It is a great university, founded in 1891.&#x27;</span></span><br><span class="line"> </span><br><span class="line">token = nlp.word_tokenize(s)</span><br><span class="line">postag = nlp.pos_tag(s)</span><br><span class="line">ner = nlp.ner(s)</span><br><span class="line">parse = nlp.parse(s)</span><br><span class="line">dependencyParse = nlp.dependency_parse(s)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27; &#x27;</span>.join(token))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;|&#x27;</span>.join([<span class="string">&#x27;,&#x27;</span>.join(i) <span class="keyword">for</span> i <span class="keyword">in</span> postag]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;|&#x27;</span>.join([<span class="string">&#x27;,&#x27;</span>.join(i) <span class="keyword">for</span> i <span class="keyword">in</span> ner]))</span><br><span class="line"><span class="built_in">print</span>(parse)</span><br><span class="line"><span class="keyword">for</span> i, begin, end <span class="keyword">in</span> dependencyParse:</span><br><span class="line">    <span class="built_in">print</span>(i, <span class="string">&#x27;-&#x27;</span>.join([<span class="built_in">str</span>(begin), token[begin-<span class="number">1</span>]]), <span class="string">&#x27;-&#x27;</span>.join([<span class="built_in">str</span>(end),token[end-<span class="number">1</span>]]))</span><br><span class="line"></span><br><span class="line">nlp.close()</span><br></pre></td></tr></table></figure>
+<h2 id="torchcrf">torchcrf</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cc4c3ae9b762">pytorch-crf的使用</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchcrf <span class="keyword">import</span> CRF</span><br><span class="line">pip install pytorch-crf==<span class="number">0.4</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h1>训练</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102697821">torch.nn.DataParallel</a></p>
+<p>Cuda out of memory</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#x27;3,4,5&#x27;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zw__chen/article/details/82806900">Pytorch（五）入门：DataLoader 和 Dataset</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/pearl8899/article/details/109567745">多GPU训练</a></p>
+<h6 id="Batch">Batch</h6>
+<p>batch size过小，花费时间多，同时梯度震荡严重，不利于收敛；batch size过大，不同batch的梯度方向没有任何变化，容易陷入局部极小值。</p>
+<h1>经典模型</h1>
+<h1>评估</h1>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jclian91/p/12459688.html">NLP（二十三）序列标注算法评估模块seqeval的使用 - 山阴少年 - 博客园 (cnblogs.com)</a></p>
+<p>Macro-F1: macro f1需要先计算出每一个类别的准召及其f1 score，然后通过求均值得到在整个样本上的f1 score.</p>
+<p>Micro-F1: micro f1不需要区分类别，直接使用总体样本的准召计算f1 score.</p>
+<p>Weighted-F1: 在macro f1基础上，考虑 每一类别 的个数，进行加权平均。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Zhou_Dao/article/details/105332981">micro-f1 &amp; macro-f1 &amp; weighted-f1</a></p>
+<h1>常用</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42189368/article/details/109361785">Anaconda设置CUDA版本和系统默认版本共存</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/840ba135df30">pandas</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Jomini/p/8636129.html">获取当前目录路径和文件</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luminousjj/p/9359543.html">python标准库之glob介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/insane-Mr-Li/p/9092619.html">读取excel文件库xlrd</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/TestSu/p/10084488.html">写excel库xlwt</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38161040/article/details/89553356">Python操作excel：用xlwt设置excel单元格背景颜色，给字体加粗</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/unnameable/p/7366437.html">读写csv</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">ine_num=<span class="number">2</span></span><br><span class="line">file_path = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(reader))    </span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        i+=<span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(row)</span><br><span class="line">        <span class="keyword">if</span> i==ine_num:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h1>TEMP</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/389738863">torch.Tensor.detach()</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xinjieyuan/article/details/105208352">torch.cat()</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1653421414340022957&amp;wfr=spider&amp;for=pc">从ReLU到GELU，一文概览神经网络的激活函数</a></p>
+<h1>项目实战</h1>
+<h2 id="文本分类-2">文本分类</h2>
+<p><a target="_blank" rel="noopener" href="https://flyhigher.top/develop/1989.html">NLP 找门：用朴素贝叶斯进行文本分类</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wwj99/p/12283799.html">BERT文本分类</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_20829389/article/details/110730570?utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.essearch_pc_relevant&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.essearch_pc_relevant">PyTorch环境下对BERT进行Fine-tuning</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangxinyang/p/10210813.html">文本分类tensorflow</a></p>
+<h2 id="Others">Others</h2>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Pytorch/2022-02-01-pytorch/">http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Pytorch/2022-02-01-pytorch/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/art/7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/01/Notebooks/ComputerScience/Windows/windows%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"><img class="prev-cover" src="/img/art/7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">windows常用软件</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/01/Notebooks/ComputerScience/Pytorch/BertTokenizer.encode_plus/"><img class="next-cover" src="/img/art/9.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">transformers篇-BertTokenizer.encode_plus()方法</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陌上人如玉</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">69</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/conansteve"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:conansteve@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.linkedin.cn/injobs/in/fan-zhang-385193190" target="_blank" title="Linkin"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://www.linkedin.cn/injobs/in/fan-zhang-385193190" target="_blank" title="Linkin"><i class="fab fa-qq"></i></a><a class="social-icon" href="https://www.linkedin.cn/injobs/in/fan-zhang-385193190" target="_blank" title="Linkin"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://www.linkedin.cn/injobs/in/fan-zhang-385193190" target="_blank" title="Linin"><i class="iconfont icon-qq-line"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">❤️ Welcome ❤️</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-2"><span class="toc-number">1.1.</span> <span class="toc-text">windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">Mac：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.1.</span> <span class="toc-text">参考资料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-nn"><span class="toc-number">3.1.</span> <span class="toc-text">torch.nn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-optim-lr-scheduler"><span class="toc-number">3.2.</span> <span class="toc-text">torch.optim.lr_scheduler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-number">3.3.</span> <span class="toc-text">优化器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loss"><span class="toc-number">3.4.</span> <span class="toc-text">loss</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nllloss"><span class="toc-number">3.4.1.</span> <span class="toc-text">nllloss</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transformers"><span class="toc-number">3.5.</span> <span class="toc-text">transformers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stanford-parser"><span class="toc-number">4.1.</span> <span class="toc-text">Stanford parser</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torchcrf"><span class="toc-number">4.2.</span> <span class="toc-text">torchcrf</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">训练</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Batch"><span class="toc-number">5.0.0.0.0.1.</span> <span class="toc-text">Batch</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">经典模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">评估</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">常用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">TEMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">项目实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB-2"><span class="toc-number">10.1.</span> <span class="toc-text">文本分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Others"><span class="toc-number">10.2.</span> <span class="toc-text">Others</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/14/Notebooks/ComputerScience/Linux/2022-06-14-shell/" title="shell脚本常用语法"><img src="/img/art/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shell脚本常用语法"/></a><div class="content"><a class="title" href="/2022/06/14/Notebooks/ComputerScience/Linux/2022-06-14-shell/" title="shell脚本常用语法">shell脚本常用语法</a><time datetime="2022-06-13T16:00:00.000Z" title="Created 2022-06-14 00:00:00">2022-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/2022-05-11-class-featurizer/" title="机器学习笔记之类别特征处理"><img src="/img/art/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习笔记之类别特征处理"/></a><div class="content"><a class="title" href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/2022-05-11-class-featurizer/" title="机器学习笔记之类别特征处理">机器学习笔记之类别特征处理</a><time datetime="2022-05-10T16:00:00.000Z" title="Created 2022-05-11 00:00:00">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" title="机器学习笔记之目标检测"><img src="/img/art/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习笔记之目标检测"/></a><div class="content"><a class="title" href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" title="机器学习笔记之目标检测">机器学习笔记之目标检测</a><time datetime="2022-05-10T16:00:00.000Z" title="Created 2022-05-11 00:00:00">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/07/Notebooks/ComputerScience/Tools/VSCode/2022-05-07-vscode-debug-configs/" title="VSCode debug配置文件设置"><img src="/img/art/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VSCode debug配置文件设置"/></a><div class="content"><a class="title" href="/2022/05/07/Notebooks/ComputerScience/Tools/VSCode/2022-05-07-vscode-debug-configs/" title="VSCode debug配置文件设置">VSCode debug配置文件设置</a><time datetime="2022-05-06T16:00:00.000Z" title="Created 2022-05-07 00:00:00">2022-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/07/Notebooks/ComputerScience/Tools/VSCode/2022-05-07-vscode-plugins/" title="VSCode必装插件"><img src="/img/art/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VSCode必装插件"/></a><div class="content"><a class="title" href="/2022/05/07/Notebooks/ComputerScience/Tools/VSCode/2022-05-07-vscode-plugins/" title="VSCode必装插件">VSCode必装插件</a><time datetime="2022-05-06T16:00:00.000Z" title="Created 2022-05-07 00:00:00">2022-05-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/art/7.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陌上人如玉</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's timemachine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
