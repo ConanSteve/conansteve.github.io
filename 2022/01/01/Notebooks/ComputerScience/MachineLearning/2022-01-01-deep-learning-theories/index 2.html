@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>深度学习理论 | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="基础 计算机视觉基本任务综述   卷积层输出尺寸计算公式 output_size&#x3D;input_size+2×padding−kernel_sizestride+1\color{OrangeRed}output\_size &#x3D; \cfrac{input\_size+2\times padding- kernel\_size}{stride}+1 output_size&#x3D;strideinput_siz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习理论">
+<meta property="og:url" content="http://conansteve.github.io/2022/01/01/Notebooks/ComputerScience/MachineLearning/2022-01-01-deep-learning-theories/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="基础 计算机视觉基本任务综述   卷积层输出尺寸计算公式 output_size&#x3D;input_size+2×padding−kernel_sizestride+1\color{OrangeRed}output\_size &#x3D; \cfrac{input\_size+2\times padding- kernel\_size}{stride}+1 output_size&#x3D;strideinput_siz">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://conansteve.github.io/img/art/4.jpg">
+<meta property="article:published_time" content="2022-01-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-08T12:22:23.479Z">
+<meta property="article:author" content="陌上人如玉">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/art/4.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://conansteve.github.io/2022/01/01/Notebooks/ComputerScience/MachineLearning/2022-01-01-deep-learning-theories/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '深度学习理论',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-08 20:22:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_3298638_9mmiq161yi6.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1140697_dxory92pb0h.js"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">80</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/art/4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陌上人如玉的时光机</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">深度学习理论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-01-01T02:00:00.000Z" title="Created 2022-01-01 10:00:00">2022-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-08T12:22:23.479Z" title="Updated 2022-11-08 20:22:23">2022-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>6min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="深度学习理论"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>基础</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/262697114">计算机视觉基本任务综述</a></p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011542238.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011542239.png" alt=""></p>
+<p>卷积层输出尺寸计算公式</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mstyle mathcolor="OrangeRed"><mi>o</mi><mi>u</mi><mi>t</mi><mi>p</mi><mi>u</mi><mi>t</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mi>i</mi><mi>n</mi><mi>p</mi><mi>u</mi><mi>t</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>+</mo><mn>2</mn><mo>×</mo><mi>p</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>k</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>e</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi></mrow><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>e</mi></mrow></mfrac><mo>+</mo><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">\color{OrangeRed}output\_size = \cfrac{input\_size+2\times padding- kernel\_size}{stride}+1
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9695em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="color:OrangeRed;">o</span><span class="mord mathnormal" style="color:OrangeRed;">u</span><span class="mord mathnormal" style="color:OrangeRed;">tp</span><span class="mord mathnormal" style="color:OrangeRed;">u</span><span class="mord mathnormal" style="color:OrangeRed;">t</span><span class="mord" style="margin-right:0.02778em;color:OrangeRed;">_</span><span class="mord mathnormal" style="color:OrangeRed;">s</span><span class="mord mathnormal" style="color:OrangeRed;">i</span><span class="mord mathnormal" style="color:OrangeRed;">ze</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel" style="color:OrangeRed;">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord" style="color:OrangeRed;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:OrangeRed;"><span class="mord mathnormal" style="color:OrangeRed;">s</span><span class="mord mathnormal" style="color:OrangeRed;">t</span><span class="mord mathnormal" style="margin-right:0.02778em;color:OrangeRed;">r</span><span class="mord mathnormal" style="color:OrangeRed;">i</span><span class="mord mathnormal" style="color:OrangeRed;">d</span><span class="mord mathnormal" style="color:OrangeRed;">e</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:OrangeRed;border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:OrangeRed;"><span class="mord mathnormal" style="color:OrangeRed;">in</span><span class="mord mathnormal" style="color:OrangeRed;">p</span><span class="mord mathnormal" style="color:OrangeRed;">u</span><span class="mord mathnormal" style="color:OrangeRed;">t</span><span class="mord" style="margin-right:0.02778em;color:OrangeRed;">_</span><span class="mord mathnormal" style="color:OrangeRed;">s</span><span class="mord mathnormal" style="color:OrangeRed;">i</span><span class="mord mathnormal" style="color:OrangeRed;">ze</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mbin" style="color:OrangeRed;">+</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mord" style="color:OrangeRed;">2</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mbin" style="color:OrangeRed;">×</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mord mathnormal" style="color:OrangeRed;">p</span><span class="mord mathnormal" style="color:OrangeRed;">a</span><span class="mord mathnormal" style="color:OrangeRed;">dd</span><span class="mord mathnormal" style="color:OrangeRed;">in</span><span class="mord mathnormal" style="margin-right:0.03588em;color:OrangeRed;">g</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mbin" style="color:OrangeRed;">−</span><span class="mspace" style="color:OrangeRed;margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;color:OrangeRed;">k</span><span class="mord mathnormal" style="margin-right:0.02778em;color:OrangeRed;">er</span><span class="mord mathnormal" style="color:OrangeRed;">n</span><span class="mord mathnormal" style="color:OrangeRed;">e</span><span class="mord mathnormal" style="margin-right:0.01968em;color:OrangeRed;">l</span><span class="mord" style="margin-right:0.02778em;color:OrangeRed;">_</span><span class="mord mathnormal" style="color:OrangeRed;">s</span><span class="mord mathnormal" style="color:OrangeRed;">i</span><span class="mord mathnormal" style="color:OrangeRed;">ze</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:OrangeRed;">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord" style="color:OrangeRed;">1</span></span></span></span></span></p>
+<p>N是输入图片长度，K是滤波器长度（卷积核大小），S是步长</p>
+<h2 id="干货集锦">干货集锦</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cntofu.com/book/85/index.html">机器学习原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/leeml-notes/#/">李宏毅机器学习笔记</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59538266">李宏毅Bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41485273/article/details/111563979">白板推导</a></p>
+<h2 id="信息论">信息论</h2>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011542240.png" alt=""></p>
+<blockquote>
+<p>I(X;Y) = I(Y;X) = H(Y)-H(Y/X) = H(X) – H(X/Y)<br>
+H(X) + H(Y) = H(X,Y) + I(X;Y)<br>
+I(X;Y)=H(X) + H(Y) – H(X,Y)</p>
+</blockquote>
+<h2 id="基础概念">基础概念</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/42706477">详解残差网络</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68386882">Singular Value Decomposition（SVD奇异值分解）</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/22751416">数据挖掘|概率图模型（一）</a></p>
+<h3 id="评估标准">评估标准</h3>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19645541">查准率，准确率，查全率</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97870600">F1值</a></p>
+<blockquote>
+<p>实际上非常简单，<strong>精确率</strong>是针对我们<strong>预测结果</strong>而言的，它表示的是预测为正的样本中有多少是真正的正样本。那么预测为正就有两种可能了，一种就是把<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%AD%A3%E7%B1%BB&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A91694636%7D">正类</a>预测为正类(TP)，另一种就是把负类预测为正类(FP)，也就是<br>
+<img src="https://www.zhihu.com/equation?tex=P++%3D+%5Cfrac%7BTP%7D%7BTP%2BFP%7D" alt=""><br>
+而<strong>召回率</strong>是针对我们原来的<strong>样本</strong>而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(TP)，另一种就是把原来的正类预测为负类(FN)。<br>
+<img src="https://www.zhihu.com/equation?tex=R+%3D+%5Cfrac%7BTP%7D%7BTP%2BFN%7D" alt=""></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66063089">自监督学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/b2q3nexPR7Amx5ficdBh-Q">超详细的NLP预训练语言模型总结清单</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/asialee_bird/article/details/81486700">TF-IDF算法介绍及实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20446337">马尔可夫毯（Markov Blanket）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wisir/p/12556353.html">端到端学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41521695">特征工程与表示学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62629465">图嵌入</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/75307407?from_voters_page=true">图神经网络</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48629412/article/details/111174968">多模态特征表示和融合</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tingzhiyi/article/details/114368433">上采样和下采样</a></p>
+<h1>经典算法</h1>
+<h2 id="机器学习算法">机器学习算法</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_july_v/category_9261611.html">机器学习十大算法系列</a></p>
+<h3 id="感知机">感知机</h3>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/320426826">感知机</a></p>
+<h3 id="logistic回归">logistic回归</h3>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/geo-will/p/10468356.html">logistic回归</a></p>
+<h3 id="EM">EM</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010834867/article/details/90762296">EM算法</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_july_v/article/details/81708386">如何通俗理解EM算法</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32925505">从EM到Variational EM</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012771351/article/details/53032365">LDA-隐狄利克雷分布-主题模型</a></p>
+</blockquote>
+<h3 id="贝叶斯">贝叶斯</h3>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/geo-will/p/10468401.html">机器学习|算法笔记-朴素贝叶斯（Naive Bayesian）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_july_v/article/details/40984699">从贝叶斯谈到贝叶斯网络</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cjneo/article/details/45167223">朴素贝叶斯 VS 逻辑回归 区别</a></p>
+<h3 id="支持向量机（SVM）">支持向量机（SVM）</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35755150">推导 | SVM详解（1）SVM基本型</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/geo-will/p/10503218.html">算法笔记-支持向量机</a></p>
+<h3 id="HMM">HMM</h3>
+<blockquote>
+<p><strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29938926">HMM隐马尔科夫模型</a></strong><br>
+<strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6945257.html">HMM</a></strong><br>
+<strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42175217/article/details/105442777?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&amp;spm=1001.2101.3001.4242">HMM2</a></strong><br>
+<strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/hudashi/article/details/87867916">隐马尔科夫模型</a></strong></p>
+</blockquote>
+<p><strong>隐马尔可夫模型是 先生成状态序列，然后由状态序列生成观测序列，即是先 P(Z) , 再 P(O|Z), 所以拟合的是 P(O, Z)也就是联合概率分布而判别模型拟合的是条件概率分布。HMM在数据量较少的时候，会脑补数据，性能更好。</strong></p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011542241.png" alt=""></p>
+<blockquote>
+<p>条件随机场是一种判别式无向图模型，生成式模型是直接对联合分布进行建模，而判别式模型则是对条件分布进行建模，隐马尔科夫模型（HMM）和马尔科夫随机场都是生成模型，而条件随机场(CRF)是判别式模型。CRF可看作给定观测值的马尔科夫随机场。</p>
+</blockquote>
+<p>维特比算法</p>
+<p><a target="_blank" rel="noopener" href="https://ah0aangfha.feishu.cn/docs/doccnoVrVCsrIzCEWkxvUlW30hN">Viterbi维特比算法</a></p>
+<h3 id="CRF">CRF</h3>
+<p><a target="_blank" rel="noopener" href="https://ah0aangfha.feishu.cn/docs/doccnkchwwM1mp9wrcy9NybCgyg">CRF-条件随机场</a></p>
+<p>为了建一个条件随机场，我们首先要定义一个特征函数集，每个特征函数都以整个句子s，当前位置i，位置i和i-1的标签为输入。然后为每一个特征函数赋予一个权重，然后针对每一个标注序列l，对所有的特征函数加权求和，必要的话，可以把求和的值转化为一个概率值。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/da49f9a5468c">CRF-条件随机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70067113">一文理解条件随机场CRF</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/383307632">机器学习 – 条件随机场 (CRF)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112980214">马尔可夫随机场以及条件随机场</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/341284906_787107">最通俗易懂的BiLSTM-CRF模型中的CRF层讲</a></p>
+<p><a target="_blank" rel="noopener" href="https://anxiang1836.github.io/2019/11/05/NLP_From_HMM_to_CRF/">从隐马尔科夫到条件随机场</a></p>
+<h3 id="决策树">决策树</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30059442">决策树(Decision Tree)：通俗易懂之介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/muzixi/p/6566803.html">决策树–信息增益，信息增益比，Geni指数的理解</a></p>
+<h2 id="其他算法">其他算法</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangyin007/article/details/82385967">随机森林算法及其实现（Random Forest）</a></p>
+<h1>神经网络概念详解</h1>
+<h2 id="基础概念-2">基础概念</h2>
+<h3 id="bottleneck">bottleneck</h3>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/duan19920101/article/details/104349188">bottleneck</a></p>
+<h2 id="RNN">RNN</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/87aa03352eb9">循环神经网络（RNN）浅析</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b2b95f945a98">Seq2Seq模型概述</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32085405">人人都能看懂的LSTM</a></p>
+<h2 id="Transformer">Transformer</h2>
+<h3 id="Attention">Attention</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/358206572">MultiHeadAttention实现详解</a></li>
+<li><a target="_blank" rel="noopener" href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1d67638139da">attention机制原理及简单实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_29571167/article/details/89012223">深入理解shortcut</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38906523/article/details/79838000">Encoder-Decoder</a></p>
+<h3 id="BERT">BERT</h3>
+<h4 id="论文理论">论文理论</h4>
+<h5 id="基础">基础</h5>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/48612853">词向量之BERT</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/248017234">bert的输入输出是什么</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Sakura55/article/details/86679826">深度学习----Transformer模型之图示进阶篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J441137V6">李宏毅-Transformer</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1H441187js?p=1">60分钟带你掌握NLP BERT理论与实战</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17441137fa/?spm_id_from=333.788.videocard.11">李宏毅-ELMO, BERT, GPT讲解</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53682800">nlp中的Attention注意力机制+Transformer详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52119092">NLP中的RNN、Seq2Seq与attention注意力机制</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53682800">nlp中的Attention注意力机制+Transformer详解</a></p>
+<h5 id="详解">详解</h5>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54356280">Bert详解</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338817680">Transformer模型详解（图解最完整版）</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/48508221">详解Transformer （Attention Is All You Need）</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43922901/article/details/102602557">Bert/Transformer模型的参数大小计算</a></p>
+<h4 id="transformer代码讲解">transformer代码讲解</h4>
+<h5 id="入门">入门</h5>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dogecheng/p/11907036.html">手把手教你用Pytorch-Transformers——部分源码解读及相关说明（一） - 那少年和狗 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dogecheng/p/11911909.html">手把手教你用Pytorch-Transformers——实战（二） - 那少年和狗 - 博客园 (cnblogs.com)</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mch2869253130/article/details/105538245">pytorch-pretrained-bert简单使用</a>  老版库</p>
+<h5 id="详解-2">详解</h5>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/360988428">transformer代码详解（一）——HuggingFace Transformers最新版本源码解读</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39422563/article/details/107180849">bert论文源码详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36949593/article/details/106515904">Huggingface-transformers项目源码剖析及Bert命名实体识别实战</a></p>
+<h5 id="其他">其他</h5>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42167712/article/details/110890965">Transformer: Training and fine-tuning(六)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/349492378">BERT中的激活函数GELU：高斯误差线性单元</a></p>
+<h3 id="VisionTransformer">VisionTransformer</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348593638">Vision Transformer , Vision MLP 超详细解读 (原理分析+代码解读) (目录)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/118733341">Vision Transformer（ViT）PyTorch代码全解析（附图解）</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/350837279">视觉 Transformer 优秀开源工作：timm 库 vision transformer 代码解读</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/118733341">Vision Transformer（ViT）PyTorch代码全解析（附图解）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/songyu0120/article/details/103884586">pytorch中model eval和torch no grad()的区别_江前云后的博客-CSDN博客_torch.nograd</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1891357">论文解释：Vision Transformers和CNN看到的特征是相同的吗？</a></p>
+<h1>经典模型</h1>
+<h2 id="VGG16">VGG16</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lfri/p/10493408.html">VGG16详解</a></p>
+<h2 id="ResNet">ResNet</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91385516">一文读懂残差网络ResNet</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79378841">ResNet网络结构分析</a></p>
+<h1>实战任务</h1>
+<h2 id="文本分类">文本分类</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangxinyang/p/10207273.html">文本分类实战</a></p>
+<h2 id="NER">NER</h2>
+<h3 id="数据集">数据集</h3>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5a5bcfe5c185">序列标注</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c7c3ace12044">序列标注和中文命名实体识别</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.datafountain.cn/datasets/5684">命名实体识别学习-数据集介绍-conll03</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/StarLib/article/details/106933974">LSTM+CRF序列标注</a></p>
+<h2 id="关系抽取">关系抽取</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sandwichnlp/p/12049829.html">简介</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74886839">实体关系联合抽取总结</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dugudaibo/article/details/79120627">结构学习：序列标注</a></p>
+<h1>多模态</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39388410/article/details/105907097">跨模态检索</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39388410/article/details/105145074">多模态融合</a></p>
+<h1>问答</h1>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20446337">生成模型和判别模型的区别</a></p>
+<ul>
+<li>生成模型数据量小时更优，判别模型数据量越大越好</li>
+<li>生成模型要求数据独立同分布，判别模型没有要求</li>
+</ul>
+<h1>TEMP</h1>
+<h1>Others</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/moxibingdao/article/details/106667760">自监督、半监督、无监督学习，傻傻分不清楚？最新综述来帮你！</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39612677/article/details/110394322">有监督学习和无监督学习举例_对比自监督学习</a></p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011542242.png" alt=""></p>
+<p>建议路线，ng课程入门，知道有哪些算法，大致怎么做，然后去kaggle打个入门赛，别做特征工程，把会的算法全用上。然后放下比赛，开始读这本书，同时看机器学习基石或其他比较数学化的进阶课程，这一步不需要你敲代码，你要会的是滚瓜烂熟的推导，做到这一步，再去kaggle参加奖金赛，阅读kernel，学习state of the art 模型，学习特征工程，再在学习过程中阅读最新的论文或者经典的论文，不断迭代这个过程，别淹死在什么机器学习实战上，有现成的轮子不用，非得费那个劲，除非你科班毕业，代码能力扎实，不然你能不能从头实现一遍决策树对你找不找到工作没有任何一毛钱关系。笔试不会考你如何实现hmm，只会考数据结构与算法，面试只会让你推导。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://conansteve.github.io">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2022/01/01/Notebooks/ComputerScience/MachineLearning/2022-01-01-deep-learning-theories/">http://conansteve.github.io/2022/01/01/Notebooks/ComputerScience/MachineLearning/2022-01-01-deep-learning-theories/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MachineLearning/">MachineLearning</a></div><div class="post_share"><div class="social-share" data-image="/img/art/4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/01/Notebooks/ComputerScience/MachineLearning/HMM/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8BHMM%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95%E8%A7%A3%E7%A0%81%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%BA%8F%E5%88%97/"><img class="prev-cover" src="/img/art/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">隐马尔科夫模型HMM（四）维特比算法解码隐藏状态序列</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/10/Notebooks/ComputerScience/Pytorch/train-by-ddp/"><img class="next-cover" src="/img/art/7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">多GPU训练</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/2022-05-11-class-featurizer/" title="机器学习笔记之类别特征处理"><img class="cover" src="/img/art/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-11</div><div class="title">机器学习笔记之类别特征处理</div></div></a></div><div><a href="/2022/03/31/Notebooks/ComputerScience/MachineLearning/2022-05-11-regressor-metrics/" title="机器学习笔记之回归模型"><img class="cover" src="/img/art/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-31</div><div class="title">机器学习笔记之回归模型</div></div></a></div><div><a href="/2022/02/01/Notebooks/ComputerScience/MachineLearning/ViterbiAlgorithm/" title="维特比算法"><img class="cover" src="/img/art/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-01</div><div class="title">维特比算法</div></div></a></div><div><a href="/2022/02/01/Notebooks/ComputerScience/MachineLearning/decision-tree/" title="决策树"><img class="cover" src="/img/art/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-01</div><div class="title">决策树</div></div></a></div><div><a href="/2022/05/11/Notebooks/ComputerScience/MachineLearning/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" title="机器学习笔记之目标检测"><img class="cover" src="/img/art/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-11</div><div class="title">机器学习笔记之目标检测</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B2%E8%B4%A7%E9%9B%86%E9%94%A6"><span class="toc-number">1.1.</span> <span class="toc-text">干货集锦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">信息论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">评估标准</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">经典算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">机器学习算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">感知机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logistic%E5%9B%9E%E5%BD%92"><span class="toc-number">2.1.2.</span> <span class="toc-text">logistic回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EM"><span class="toc-number">2.1.3.</span> <span class="toc-text">EM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="toc-number">2.1.4.</span> <span class="toc-text">贝叶斯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89"><span class="toc-number">2.1.5.</span> <span class="toc-text">支持向量机（SVM）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HMM"><span class="toc-number">2.1.6.</span> <span class="toc-text">HMM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRF"><span class="toc-number">2.1.7.</span> <span class="toc-text">CRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.1.8.</span> <span class="toc-text">决策树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">其他算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">神经网络概念详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-2"><span class="toc-number">3.1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bottleneck"><span class="toc-number">3.1.1.</span> <span class="toc-text">bottleneck</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN"><span class="toc-number">3.2.</span> <span class="toc-text">RNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-number">3.3.</span> <span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention"><span class="toc-number">3.3.1.</span> <span class="toc-text">Attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BERT"><span class="toc-number">3.3.2.</span> <span class="toc-text">BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E7%90%86%E8%AE%BA"><span class="toc-number">3.3.2.1.</span> <span class="toc-text">论文理论</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">3.3.2.1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.3.2.1.2.</span> <span class="toc-text">详解</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transformer%E4%BB%A3%E7%A0%81%E8%AE%B2%E8%A7%A3"><span class="toc-number">3.3.2.2.</span> <span class="toc-text">transformer代码讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">3.3.2.2.1.</span> <span class="toc-text">入门</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3-2"><span class="toc-number">3.3.2.2.2.</span> <span class="toc-text">详解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.3.2.2.3.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VisionTransformer"><span class="toc-number">3.3.3.</span> <span class="toc-text">VisionTransformer</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">经典模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VGG16"><span class="toc-number">4.1.</span> <span class="toc-text">VGG16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResNet"><span class="toc-number">4.2.</span> <span class="toc-text">ResNet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">实战任务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB"><span class="toc-number">5.1.</span> <span class="toc-text">文本分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NER"><span class="toc-number">5.2.</span> <span class="toc-text">NER</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">5.2.1.</span> <span class="toc-text">数据集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96"><span class="toc-number">5.3.</span> <span class="toc-text">关系抽取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">多模态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">问答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">TEMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">Others</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/art/4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陌上人如玉</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's time machine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

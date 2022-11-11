@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>终端工具配置 | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="终端工具配置 zsh安装 如果你用 Mac，就可以直接看下一节 如果你用 Redhat Linux，执行：sudo yum install zsh 如果你用 Ubuntu Linux，执行：sudo apt-get install zsh 如果你用 Windows……去洗洗睡吧。 安装完成后设置当前用户使用 zsh：chsh -s &#x2F;bin&#x2F;zsh，根据提示输入当前用户的密码就可以了。 oh-my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终端工具配置">
+<meta property="og:url" content="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Basic/2022-02-01-terminal-configuration/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="终端工具配置 zsh安装 如果你用 Mac，就可以直接看下一节 如果你用 Redhat Linux，执行：sudo yum install zsh 如果你用 Ubuntu Linux，执行：sudo apt-get install zsh 如果你用 Windows……去洗洗睡吧。 安装完成后设置当前用户使用 zsh：chsh -s &#x2F;bin&#x2F;zsh，根据提示输入当前用户的密码就可以了。 oh-my">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://conansteve.github.io/img/art/5.jpg">
+<meta property="article:published_time" content="2022-02-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-11T05:07:13.303Z">
+<meta property="article:author" content="陌上人如玉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/art/5.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Basic/2022-02-01-terminal-configuration/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '终端工具配置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-11 13:07:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_3298638_9mmiq161yi6.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1140697_dxory92pb0h.js"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">78</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/art/5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陌上人如玉的时光机</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">终端工具配置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-01T02:00:00.000Z" title="Created 2022-02-01 10:00:00">2022-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-11T05:07:13.303Z" title="Updated 2022-11-11 13:07:13">2022-11-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>10min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="终端工具配置"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>终端工具配置</h1>
+<h1>zsh安装</h1>
+<p>如果你用 Mac，就可以直接看下一节</p>
+<p>如果你用 Redhat Linux，执行：<code>sudo yum install zsh</code></p>
+<p>如果你用 Ubuntu Linux，执行：<code>sudo apt-get install zsh</code></p>
+<p>如果你用 Windows……去洗洗睡吧。</p>
+<p>安装完成后设置当前用户使用 zsh：<code>chsh -s /bin/zsh</code>，根据提示输入当前用户的密码就可以了。</p>
+<h1>oh-my-zsh</h1>
+<p>oh-my-zsh可能会影响速度，所以，可以不安装，如果不安装，插件的安装，建议使用”一步安装“</p>
+<p>安装「oh my zsh」可以自动安装也可以手动安装。</p>
+<p>自动安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<p>手动安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line"><span class="built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>都不复杂，安装完成之后退出当前会话重新打开一个终端窗口，你就可以见到这个彩色的提示了：</p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011530511.png" alt=""></p>
+<p><strong>默认推荐配置</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export ZSH=&quot;$HOME/.oh-my-zsh&quot;</span><br><span class="line">ZSH_THEME=&quot;robbyrussell&quot;</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">plugins=(git history vscode sublime sudo)</span><br></pre></td></tr></table></figure>
+<h1>主题安装</h1>
+<h2 id="Powerlevel10k">Powerlevel10k</h2>
+<p>官网：<a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></p>
+<p>可以选择pure主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/.zsh/plugins/powerlevel10k</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme&#x27;</span> &gt;&gt;~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="p10k-configure">p10k configure</h3>
+<h3 id="安装Hack-Nerd字体"><a target="_blank" rel="noopener" href="https://www.nerdfonts.com/font-downloads">安装Hack Nerd字体</a></h3>
+<h3 id="VSCode字体设置">VSCode字体设置</h3>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Hack</span> Nerd Font Mono, Monaco, <span class="string">&#x27;Courier New&#x27;</span>, monospace</span><br></pre></td></tr></table></figure>
+<h2 id="Pure">Pure</h2>
+<p>官网：<a target="_blank" rel="noopener" href="https://github.com/sindresorhus/pure">https://github.com/sindresorhus/pure</a></p>
+<p>建议通过使用Powerlevel10k安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br><span class="line">brew install pure</span><br><span class="line">git <span class="built_in">clone</span> https://gitee.com/URmyLucky/pure2020.git ~/.zsh/plugins/pure</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;(q-)PWD&#125;</span>/.zsh/plugins/pure/pure.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>.zshrc文件中添加</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">autoload -U promptinit; promptinit</span><br><span class="line">prompt pure</span><br></pre></td></tr></table></figure>
+<h1>必备插件安装</h1>
+<h2 id="安装自动补全功能">安装自动补全功能</h2>
+<h3 id="方法一">方法一</h3>
+<p>使用 <code>zsh</code> 我认为第一个吸引我的重要插件就是 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a>。它会自动为你的终端命令提供补全建议，让你能更加快速的完成命令输入，有了它，你再也不用一遍遍的按 <code>tab</code> 来加快你的命令输入了。</p>
+<p><code>zsh-autosuggestions</code> 安装文档你可以点击这个<a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md">链接</a> 进入查看，比如使用 Git 安装步骤如下：</p>
+<p>使用 Git 把项目从仓库 Clone 下来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/plugins/zsh-autosuggestions</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br></pre></td></tr></table></figure>
+<p>或者手动将以下内容添加到 <code>.zshrc</code> 文件内：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
+<p>生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>重新开启终端会话，你就可以享受 <code>zsh-autosuggestions</code> 给你带来的便利了。</p>
+<h4 id="一步安装：">一步安装：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/plugins/zsh-autosuggestions</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">//gitee</span><br><span class="line">git <span class="built_in">clone</span> git@gitee.com:lhaisu/zsh-autosuggestions.git ~/.zsh/plugins/zsh-autosuggestions</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：推荐">方法二：推荐</h3>
+<ol>
+<li>把插件仓库克隆到<code>$ZSH_CUSTOM/plugins</code> (默认位置是 ~/.oh-my-zsh/custom/plugins)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img src="https://dev.azure.com/conansteve/87be1d78-05d4-41bd-87b2-a023d463dcd2/_apis/git/repositories/075c6005-9f0d-4b8c-97a7-60d87486d3f4/items?path=%2F1648455923125_2748.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0" style="zoom:50%;" />
+<ol>
+<li>设置<code>~/.zshrc</code>，把<code>zsh-autosuggestions</code>添加到 Oh My Zsh 要加载的插件列表中</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>使配置生效 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="语法高亮插件">语法高亮插件</h2>
+<p>安装zsh-syntax-highlighting语法高亮插件</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></p>
+<h3 id="一步安装：-2">一步安装：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/plugins/zsh-syntax-highlighting</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line">//gitee</span><br><span class="line">git <span class="built_in">clone</span> git@gitee.com:jklash1996/zsh-syntax-highlighting.git ~/.zsh/plugins/zsh-syntax-highlighting</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h2 id="自动跳转插件autojump">自动跳转插件autojump</h2>
+<p>地址：<a target="_blank" rel="noopener" href="https://github.com/wting/autojump">https://github.com/wting/autojump</a></p>
+<p>它的用法是输入 <code>j 目录名</code> 或 <code>j 目录名包含的字符</code>（这个目录必须是之前 cd 访问过的），就可直接切换到相应的目录。不用再各种<code>cd</code>啦～具体看下面截图示例。</p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011530512.png" alt=""></p>
+<h4 id="方法一：推荐">方法一：推荐</h4>
+<ol>
+<li>
+<h5 id="Mac安装">Mac安装</h5>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Add the following line to your ~/.bash_profile or ~/.zshrc file:<br>
+<code> [ -f /opt/homebrew/etc/profile.d/autojump.sh ] &amp;&amp; . /opt/homebrew/etc/profile.d/autojump.sh</code><br>
+If you use the Fish shell then add the following line to your ~/.config/fish/config.fish:<br>
+<code> [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish</code><br>
+Restart your terminal for the settings to take effect.</p>
+</blockquote>
+<ol>
+<li>
+<h5 id="Linux-一步安装">Linux 一步安装</h5>
+</li>
+</ol>
+<p>首先下载 autojump 源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:wting/autojump.git ~/.zsh/plugins/autojump</span><br><span class="line"><span class="built_in">cd</span> ~/.zsh/plugins/autojump</span><br><span class="line">./install.py</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; source ~/.autojump/etc/profile.d/autojump.sh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>国内源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@gitee.com:gentlecp/autojump.git ~/.zsh/plugins/autojump</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/.zsh/plugins/autojump</span><br><span class="line"></span><br><span class="line">./install.py</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; source ~/.autojump/etc/profile.d/autojump.sh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>安装完成后，使用查看autojump版本。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>autojump --version</span><br><span class="line">autojump release-v21.<span class="number">1.2</span></span><br></pre></td></tr></table></figure>
+<h2 id="colorls">colorls</h2>
+<p>官网：<a target="_blank" rel="noopener" href="https://github.com/athityakumar/colorls">https://github.com/athityakumar/colorls</a></p>
+<h3 id="homebrew安装：">homebrew安装：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install ruby</span><br><span class="line">sudo gem install colorls</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果显示<code>zsh: command not found: colorls</code><br>
+在<code>.zshrc</code>里面添加<code>export PATH=$PATH:$(ruby -e 'puts Gem.bindir')</code></p>
+</blockquote>
+<h3 id="WSL-apt安装">WSL apt安装</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ruby-dev  //切记用官方源，阿里云源会出问题，会出错，其他源暂时没试过</span><br><span class="line">sudo gem install colorls</span><br></pre></td></tr></table></figure>
+<h3 id="MacOS-13-6源码安装：">MacOS 13.6源码安装：</h3>
+<p>安装ruby(version&gt;2.5)  <a target="_blank" rel="noopener" href="https://www.ruby-lang.org/en/downloads/">https://www.ruby-lang.org/en/downloads/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_38432732/article/details/106573806">源码安装ruby</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_38432732/article/details/106573806">https://blog.csdn.net/baidu_38432732/article/details/106573806</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/ruby-3.0.3</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line">esource ~/.zshrc</span><br><span class="line">ruby -v</span><br><span class="line">gem install colorls</span><br></pre></td></tr></table></figure>
+<p>如果安装colorls失败，需要安装openssl，命令为<code>brew install openssl@1.1</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">./config --prefix=<span class="regexp">/usr/</span>local/opt/openssl/</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line">cd  ~<span class="regexp">/Desktop/</span>ruby-<span class="number">2.7</span><span class="number">.5</span>/  </span><br><span class="line"></span><br><span class="line"><span class="comment">//下面功能都是生成makefile</span></span><br><span class="line">./configure --prefix=<span class="regexp">/usr/</span>local/opt/ruby-<span class="number">2.7</span><span class="number">.5</span> --<span class="keyword">with</span>-openssl-dir=<span class="regexp">/usr/</span>local/opt/openssl</span><br><span class="line">./configure --prefix=<span class="regexp">/usr/</span>local/opt/ruby-<span class="number">2.7</span><span class="number">.5</span> --<span class="keyword">with</span>-openssl-include=<span class="regexp">/usr/</span>local/opt/openssl/include/ --<span class="keyword">with</span>-openssl-lib=<span class="regexp">/usr/</span>local/opt/openssl/lib</span><br><span class="line"><span class="comment">//测试成功</span></span><br><span class="line">cd ./ext/openssl/</span><br><span class="line">ruby extconf.<span class="property">rb</span> --prefix=<span class="regexp">/usr/</span>local/opt/ruby-<span class="number">2.7</span><span class="number">.5</span> --<span class="keyword">with</span>-openssl-include=<span class="regexp">/usr/</span>local/opt/openssl/include/ --<span class="keyword">with</span>-openssl-lib=<span class="regexp">/usr/</span>local/opt/openssl/lib</span><br><span class="line"><span class="comment">//end</span></span><br><span class="line"> sudo make </span><br><span class="line"> sudo make install</span><br></pre></td></tr></table></figure>
+<p>将下面代码添加进.zshrc文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> RUBY_HOME=/usr/local/opt/ruby-2.7.5</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$RUBY_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LDFLAGS=“RUBY_HOME/lib”</span><br><span class="line"><span class="built_in">export</span> CPPFLAGS=“RUBY_HOME/include”</span><br></pre></td></tr></table></figure>
+<h3 id="别名配置文件">别名配置文件</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># colorls别名start</span></span><br><span class="line"><span class="comment"># --sd 排序 </span></span><br><span class="line"><span class="comment"># --gs git状态 Shows git status for each entry</span></span><br><span class="line"><span class="comment"># -r(or)  --report 显示报告</span></span><br><span class="line"><span class="comment"># -d (or) --dirs : Shows only directories</span></span><br><span class="line"><span class="comment"># -f (or) --files : Shows only files</span></span><br><span class="line"><span class="comment"># -h (or) --help : Prints a very helpful help menu</span></span><br><span class="line"><span class="comment"># --sd (or) --sort-dirs or --group-directories-first : Shows directories first, followed by files</span></span><br><span class="line"><span class="built_in">alias</span> l=<span class="string">&#x27;colorls --sd --gs&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> la=<span class="string">&#x27;colorls -A --sd --sf --gs --group-directories-first&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">&#x27;colorls -l --gs --group-directories-first&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> lla=<span class="string">&#x27;colorls -lA --sd --sf --gs --group-directories-first&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> lt=<span class="string">&quot;colorls --tree=1&quot;</span></span><br><span class="line"><span class="built_in">alias</span> lt2=<span class="string">&quot;colorls --tree=2&quot;</span></span><br><span class="line"><span class="built_in">alias</span> lls=<span class="string">&quot;ls -lAF&quot;</span></span><br><span class="line"><span class="comment"># colorls别名end</span></span><br></pre></td></tr></table></figure>
+<h1>其他插件</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git history vscode sublime sudo)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>vscode</li>
+<li>Sublime</li>
+<li>Sudo</li>
+</ul>
+<h1>Hyper</h1>
+<img src="https://dev.azure.com/conansteve/87be1d78-05d4-41bd-87b2-a023d463dcd2/_apis/git/repositories/075c6005-9f0d-4b8c-97a7-60d87486d3f4/items?path=%2F1648455784134_8713.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0" style="zoom:50%;" />
+<h2 id="安装方法">安装方法</h2>
+<ol>
+<li>通过Macwk网站安装</li>
+<li>MacOS可通过homebrew安装 <code>brew install hyper</code></li>
+<li><a target="_blank" rel="noopener" href="https://hyper.is">官网下载</a></li>
+</ol>
+<h2 id="配置">配置</h2>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">copyOnSelect:</span> <span class="literal">true</span>,<span class="regexp">//</span>自动复制被选择区域</span><br><span class="line"><span class="symbol">shell:</span> <span class="string">&#x27;zsh&#x27;</span>,</span><br><span class="line"><span class="symbol">fontFamily:</span> <span class="string">&#x27;Hack Nerd Font Mono, &quot;DejaVu Sans Mono&quot;, Consolas, &quot;Lucida Console&quot;, monospace&#x27;</span>,<span class="regexp">//</span>MacOS  <span class="symbol">https:</span>/<span class="regexp">/www.nerdfonts.com/font</span>-downloads</span><br><span class="line"><span class="string">&quot;editor.fontFamily&quot;</span>: <span class="string">&quot;Hack Nerd Font Mono,Lucida Console, &#x27; Lucida Console&#x27;, Lucida Console，&quot;</span>,  <span class="regexp">//windows</span></span><br></pre></td></tr></table></figure>
+<p>这里我们会用到两个插件：</p>
+<ul>
+<li>hyper-snazzy：提供终端颜色主题</li>
+<li>hyper-transparent-dynamic：提供终端窗口毛玻璃半透明效果</li>
+</ul>
+<p>具体配置代码如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins<span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;hyper-snazzy&quot;</span><span class="punctuation">,</span> <span class="string">&quot;hyper-transparent-dynamic&quot;</span><span class="punctuation">,</span> <span class="string">&quot;hyperpower&quot;</span><span class="punctuation">,</span><span class="string">&quot;hyper-pane&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗口透明度调整">窗口透明度调整</h3>
+<p>同样是在 Hyper 的配置文件中，添加如下代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hyperTransparentDynamic<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    alpha<span class="punctuation">:</span> <span class="number">0.5</span> <span class="comment">// 默认 50% 透明度</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="comment">//节点config的子节点</span></span><br></pre></td></tr></table></figure>
+<h2 id="主题">主题</h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hyper i hyper-npm-theme</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011530513.png" alt="image (1642×986) (hyper.is)"></p>
+<h1>iterm2</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ClownG/article/details/107849908">Mac终端工具iTerm2的多个ssh链接保存设置（类似Xshell的使用方法）</a></p>
+<h1>别名配置</h1>
+<h2 id="colorls-2"><a href="#colorls">colorls</a></h2>
+<h2 id="通用必备配置">通用必备配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#git 别名</span></span><br><span class="line"><span class="built_in">alias</span> gta=<span class="string">&quot;git add .&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtam=<span class="string">&quot;git add .  &amp;&amp; git commit -m&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtb=<span class="string">&quot;git branch&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtbd=<span class="string">&quot;git branch -d&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtck=<span class="string">&quot;git checkout&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtcl=<span class="string">&quot;git clone&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtm=<span class="string">&quot;git commit -m&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtl=<span class="string">&quot;git log --graph --all&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtlo=<span class="string">&quot;git log --oneline --graph --all&quot;</span></span><br><span class="line"><span class="comment"># cancel last add</span></span><br><span class="line"><span class="built_in">alias</span> gtr=<span class="string">&quot;git reset HEAD&quot;</span></span><br><span class="line"><span class="comment"># cancel last commit and add,慎用，会删除本地文件的修改</span></span><br><span class="line"><span class="built_in">alias</span> gtrh=<span class="string">&quot;git reset --hard HEAD^&quot;</span></span><br><span class="line"><span class="comment"># cancel last commit</span></span><br><span class="line"><span class="built_in">alias</span> gtrs=<span class="string">&quot;git reset --soft HEAD^&quot;</span></span><br><span class="line"><span class="comment"># 取消提交，可以先gtrs，再gtr</span></span><br><span class="line"><span class="built_in">alias</span> gtps=<span class="string">&quot;git push&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gts=<span class="string">&quot;git status&quot;</span></span><br><span class="line"><span class="built_in">alias</span> gtst=<span class="string">&quot;git stash&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert web page to markdown</span></span><br><span class="line"><span class="built_in">alias</span> cm=<span class="string">&quot;clean-mark&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> src=<span class="string">&quot;source ~/.zshrc&quot;</span></span><br><span class="line"><span class="built_in">alias</span> strc=<span class="string">&quot;subl ~/.zshrc&quot;</span></span><br><span class="line"><span class="built_in">alias</span> als=<span class="string">&quot;alias&quot;</span></span><br><span class="line"><span class="built_in">alias</span> alsg=<span class="string">&quot;alias |grep&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert jupyter notebook to markdown </span></span><br><span class="line"><span class="built_in">alias</span> nb2md=<span class="string">&quot;jupyter nbconvert --to markdown&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># conda alias</span></span><br><span class="line"><span class="built_in">alias</span> cda=<span class="string">&quot;conda activate&quot;</span></span><br><span class="line"><span class="built_in">alias</span> cdd=<span class="string">&quot;conda deactivate&quot;</span></span><br><span class="line"><span class="built_in">alias</span> cdel=<span class="string">&quot;conda env list&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo theme</span></span><br><span class="line"><span class="built_in">alias</span> hxcg=<span class="string">&quot;hexo clean &amp;&amp; hexo g&quot;</span></span><br><span class="line"><span class="built_in">alias</span> hxcgs=<span class="string">&quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo server&quot;</span></span><br><span class="line"><span class="built_in">alias</span> hxs=<span class="string">&quot;hexo server&quot;</span></span><br><span class="line"><span class="built_in">alias</span> hxd=<span class="string">&quot;hexo deploy&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他配置">其他配置</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">普通别名，无法配置colorls时使用</span></span><br><span class="line">alias l=&#x27;ls -CF&#x27;</span><br><span class="line">alias la=&#x27;ls -AF &#x27;</span><br><span class="line">alias lsa=&#x27;ls -AF &#x27;</span><br><span class="line">alias ll=&#x27;ls -lF &#x27;</span><br><span class="line">alias lla=&#x27;ls -lAF &#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>windows terminal</h1>
+<h1>Reference</h1>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/19556676">终极 Shell——ZSH</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/franco109/topics/1314003">玩转终端软件 Hyper</a></li>
+<li><a target="_blank" rel="noopener" href="https://sspai.com/post/56081#!">打造高颜值终端——Hyper</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/43c1b6e40c69">zsh 命令自动补全插件 zsh-autosuggestions 安装和配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/15f0ffaa88d7">Linux 懒人工具 - autojump</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/himonkey/p/11853487.html">Mac终端窗口配置oh-my-zsh</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a61fea170d1a">Windows Terminal 美化配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzhujian/article/details/103330056">打造最强终端之一：Fish shell简明教程</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://conansteve.github.io">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Basic/2022-02-01-terminal-configuration/">http://conansteve.github.io/2022/02/01/Notebooks/ComputerScience/Basic/2022-02-01-terminal-configuration/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/art/5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/01/Notebooks/ComputerScience/Basic/2022-02-01-install-hombrew-on-mac/"><img class="prev-cover" src="/img/art/4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Mac安装Homebrew</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/01/Notebooks/ComputerScience/Basic/CommonFont/"><img class="next-cover" src="/img/matery/8.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">常用字体配置</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">终端工具配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">zsh安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">oh-my-zsh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">主题安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Powerlevel10k"><span class="toc-number">4.1.</span> <span class="toc-text">Powerlevel10k</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p10k-configure"><span class="toc-number">4.1.1.</span> <span class="toc-text">p10k configure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hack-Nerd%E5%AD%97%E4%BD%93"><span class="toc-number">4.1.2.</span> <span class="toc-text">安装Hack Nerd字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.1.3.</span> <span class="toc-text">VSCode字体设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pure"><span class="toc-number">4.2.</span> <span class="toc-text">Pure</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">必备插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%8A%9F%E8%83%BD"><span class="toc-number">5.1.</span> <span class="toc-text">安装自动补全功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number">5.1.1.</span> <span class="toc-text">方法一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E6%AD%A5%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">一步安装：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%8E%A8%E8%8D%90"><span class="toc-number">5.1.2.</span> <span class="toc-text">方法二：推荐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E6%8F%92%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">语法高亮插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AD%A5%E5%AE%89%E8%A3%85%EF%BC%9A-2"><span class="toc-number">5.2.1.</span> <span class="toc-text">一步安装：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%AC%E6%8F%92%E4%BB%B6autojump"><span class="toc-number">5.3.</span> <span class="toc-text">自动跳转插件autojump</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%8E%A8%E8%8D%90"><span class="toc-number">5.3.0.1.</span> <span class="toc-text">方法一：推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Mac%E5%AE%89%E8%A3%85"><span class="toc-number">5.3.0.1.1.</span> <span class="toc-text">Mac安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-%E4%B8%80%E6%AD%A5%E5%AE%89%E8%A3%85"><span class="toc-number">5.3.0.1.2.</span> <span class="toc-text">Linux 一步安装</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#colorls"><span class="toc-number">5.4.</span> <span class="toc-text">colorls</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#homebrew%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">5.4.1.</span> <span class="toc-text">homebrew安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WSL-apt%E5%AE%89%E8%A3%85"><span class="toc-number">5.4.2.</span> <span class="toc-text">WSL apt安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS-13-6%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">5.4.3.</span> <span class="toc-text">MacOS 13.6源码安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%AB%E5%90%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">5.4.4.</span> <span class="toc-text">别名配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">其他插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">Hyper</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">7.2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E9%80%8F%E6%98%8E%E5%BA%A6%E8%B0%83%E6%95%B4"><span class="toc-number">7.2.1.</span> <span class="toc-text">窗口透明度调整</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98"><span class="toc-number">7.3.</span> <span class="toc-text">主题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">iterm2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">别名配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#colorls-2"><span class="toc-number">9.1.</span> <span class="toc-text">colorls</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%BF%85%E5%A4%87%E9%85%8D%E7%BD%AE"><span class="toc-number">9.2.</span> <span class="toc-text">通用必备配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-number">9.3.</span> <span class="toc-text">其他配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">windows terminal</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">11.</span> <span class="toc-text">Reference</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/art/5.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陌上人如玉</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's time machine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
