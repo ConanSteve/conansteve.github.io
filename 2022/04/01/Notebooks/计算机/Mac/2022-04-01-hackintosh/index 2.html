@@ -1,0 +1,604 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>黑苹果安装教程 | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="个人的黑苹果安装教程，包括以下机型：惠普zhan66G1Pro、台式机技嘉Z97D3H+i56790K+GTX970Gaming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑苹果安装教程">
+<meta property="og:url" content="http://conansteve.github.io/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Mac/2022-04-01-hackintosh/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="个人的黑苹果安装教程，包括以下机型：惠普zhan66G1Pro、台式机技嘉Z97D3H+i56790K+GTX970Gaming">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://conansteve.github.io/img/art/4.jpg">
+<meta property="article:published_time" content="2022-04-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-15T13:53:48.000Z">
+<meta property="article:author" content="陌上人如玉">
+<meta property="article:tag" content="mac tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/art/4.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://conansteve.github.io/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Mac/2022-04-01-hackintosh/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '黑苹果安装教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-15 21:53:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_3298638_9mmiq161yi6.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1140697_dxory92pb0h.js"><link rel="stylesheet" href="/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">116</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">23</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/art/4.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="陌上人如玉的时光机"><span class="site-name">陌上人如玉的时光机</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">黑苹果安装教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-01T02:00:00.000Z" title="Created 2022-04-01 10:00:00">2022-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-09-15T13:53:48.000Z" title="Updated 2023-09-15 21:53:48">2023-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/macOS/">macOS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>12min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="黑苹果安装教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>黑苹果安装教程</h1>
+<h2 id="前言">前言</h2>
+<p>本教程参考资料主要来源于<a target="_blank" rel="noopener" href="https://heipg.cn/">黑苹果星球</a>，目前推荐使用OpenCore安装。<br>
+安装的EFI文件有2种来源，一种是直接使用别人相似的配置（建议），另外一种是使用OC Gem-x自己生成。</p>
+<h2 id="第一章-工具下载地址">第一章 工具下载地址</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.mfpud.com/tools/hackintool/">Hackintool</a></li>
+<li><a target="_blank" rel="noopener" href="https://macoshome.com/hackintosh/uefistart/2456.html#Down">opencore</a></li>
+</ul>
+<h3 id="OpenCore-Configurator">OpenCore Configurator</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://heipg.cn/?cat=6&amp;s=opencore++configurator">OCC 黑苹果星球</a></li>
+<li><a target="_blank" rel="noopener" href="https://macoshome.com/hackintosh/htools/2100.html#Down">OpenCore Configurator OCC</a></li>
+</ul>
+<h3 id="OC-Gen-X">OC Gen-X</h3>
+<p><a target="_blank" rel="noopener" href="https://www.mfpud.com/opencore/ocgenx/">OC Gen-X黑苹果动力下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/?cat=&amp;s=OC+Gen">OC Gen-X黑苹果星球下载地址</a></p>
+<h2 id="第二章-OpenCore-EFI文件生成">第二章 OpenCore EFI文件生成</h2>
+<ul>
+<li>按照教程<a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/one-key-opencore-efi.html">一键生成黑苹果 OpenCore EFI 文件：OC.Gen-X</a>生成好默认EFI，其中启动参数使用：</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># alcid:根据声卡决定，如果默认不行，自己修改。</span><br><span class="line">-v debug=0x100 keepsyms=1 igfxonln=1 -alcbeta alcid=1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>手动添加驱动：</p>
+<blockquote>
+<p>HibernationFixup.kext<br>
+USBMap.kext</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="第三章-安装教程">第三章 安装教程</h2>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>引导的<code>efi</code>文件位置是<code>/EFT/OC/opencore.eft</code>，不是<code>/EFI/Boot/Boot.efi</code>，设置错误，可能导致无法开机。<br>
+如果选择<code>Reset NVRam</code>会导致引导位置重置为<code>/EFI/Boot/Boot.efi</code>，进一步导致无法开机。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202303121125006.png" alt=""></p>
+<h3 id="网络恢复版">网络恢复版</h3>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/install-macos-via-internet-recovery.html">恢复版安装教程</a></p>
+<ol>
+<li>保证PC能联网，不管是有线还是无线都可以</li>
+<li>将一块硬盘扇区全部删除，用DiskGenius在硬盘的最前端创建1个3G的ESP分区，并格式化。将系统恢复文件和EFI文件拷贝进去。</li>
+<li>用EasyUEFI创建EFI引导，引导到第二部的ESP分区的路径**<code>/EFI/OC/opencore.efi</code>**文件，保存重启</li>
+<li>进入BIOS，将第三部设置的引导设置为第一位。重启</li>
+<li>安装盘名为<code>NONAME</code></li>
+</ol>
+<blockquote>
+<p>默认是<code>NONAME</code>，如果要修改，需要在恢复镜像文件夹内添加文本文件，修改为需要显示的内容，然后将文本文件名修改为<code>.contentDetails</code></p>
+</blockquote>
+<ol start="6">
+<li>其他正常安装。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://macoshome.com/hackintosh/hcourse/6103.html">https://macoshome.com/hackintosh/hcourse/6103.html</a></p>
+<h3 id="U盘刻录版教程">U盘刻录版教程</h3>
+<h2 id="第四章-个人安装实例">第四章 个人安装实例</h2>
+<h3 id="Z97D3H-i5-4690k-GTX970">Z97D3H + i5 4690k + GTX970</h3>
+<h4 id="CPU对比">CPU对比</h4>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202211021740545.png" alt=""></p>
+<h4 id="BIOS设置BIOS设置">BIOS设置<img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011445612.png" alt="BIOS设置"></h4>
+<h3 id="惠普战66G1Pro双系统">惠普战66G1Pro双系统</h3>
+<ol>
+<li>划分2个独立的磁盘，一个用DiskGenius创建ESP盘格式化，大约2G，另外一个用windows磁盘管理工具，创建一个盘，不要格式化。（<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43971764/article/details/106075438">双系统磁盘创建</a>）</li>
+<li>将EFI文件和恢复版系统拷贝进ESP分区</li>
+<li>用EasyEFI工具创建EFI引导</li>
+<li>其他一样</li>
+</ol>
+<h2 id="第五章-OpenCore-Configurator">第五章 OpenCore Configurator</h2>
+<p><a target="_blank" rel="noopener" href="https://macoshome.com/hackintosh/htools/2100.html#Down">下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/shuiyunxc/OpenCore-Configurator">版本说明</a></p>
+<p><a target="_blank" rel="noopener" href="https://macx.top/8780.html">使用教程</a></p>
+<p><a target="_blank" rel="noopener" href="http://softwareupdate.vmware.com/cds/vmw-desktop/fusion">vmtools</a></p>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204011445614.jpg" alt=""></p>
+<h3 id="修改主题">修改主题</h3>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/opencore-modern-picker.html">教程</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/opencore-070-rog-theme-neon.html">霓虹ROG主题</a></li>
+<li><a target="_blank" rel="noopener" href="https://heipg.cn/apps/opencore-theme-pinkdream.html">元气少女主题</a></li>
+</ul>
+<h3 id="关闭啰嗦模式">关闭啰嗦模式</h3>
+<p>No2.关闭 -v 跑代码（关闭啰嗦模式）</p>
+<p>NVRAM-随机访问寄存器设置 --&gt; 添加 --&gt; UUID：7C436110-AB2A-4BBB-A880-FE41995C9F82</p>
+<p>查找键：<code>boot-args</code></p>
+<p>删除值：<code>-v</code></p>
+<h3 id="切换默认启动磁盘">切换默认启动磁盘</h3>
+<p>启动界面按<code>Ctrl</code>+<code>Enter</code></p>
+<h3 id="声卡设置">声卡设置</h3>
+<p>DeviceProperties-设备属性设置</p>
+<p>设备ID：<code>PciRoot(0x0)/Pci(0x1b,0x0)</code>必须存在，否则会无法识别耳机</p>
+<h3 id="显卡设置">显卡设置</h3>
+<p>DeviceProperties-设备属性设置</p>
+<p>设备ID：<code>PciRoot(0x0)/Pci(0x2,0x0)</code>必须存在，否则会无法驱动显卡</p>
+<h3 id="添加UEFI引导项">添加UEFI引导项</h3>
+<p>「注意」使用 Clover 引导时，启动文件可选择 BOOTX64.efi 也可以选择 CLOVERX64.efi；但使用 OpenCore 引导时，启动文件必须选择 BOOTx64.efi，否则会造成莫名其妙的问题，切记切记！</p>
+<h2 id="第六章-系统优化">第六章 系统优化</h2>
+<p><a target="_blank" rel="noopener" href="https://apple.sqlsec.com/7-%E5%AE%8C%E7%BE%8E%E9%BB%91%E6%9E%9C/7-1/">完美黑苹果</a></p>
+<h3 id="启动参数">启动参数</h3>
+<p>不管是OCG还是黑苹果星球的配置文件，引导不了多数原因是启动参数的问题，启动参数在<code>NVRAM</code>中的<code>7C436110-AB2A-4BBB-A880-FE41995C9F82</code>中修改，以下是几个参数模板：</p>
+<ul>
+<li>OCG内置主题-可启动<br>
+<code>-v keepsyms=1 debug=0x100 agdpmod=pikera -alcbeta alcid=1</code></li>
+<li>OCG自定义主题-可启动<br>
+<code>-v keepsyms=1 debug=0x100 agdpmod=pikera -alcbeta alcid=1 npci=0x2000</code></li>
+<li>黑苹果星球原版<br>
+<code>-v debug=0x100 keepsyms=1</code></li>
+<li>4690k黑苹果星球+内置主题-可启动版<br>
+<code>-v debug=0x100 keepsyms=1 agdpmod=pikera -alcbeta alcid=1</code></li>
+<li>4690k黑苹果星球+自定义主题-可启动版<br>
+<code>-v debug=0x100 keepsyms=1 agdpmod=pikera -alcbeta alcid=1 npci=0x2000</code></li>
+<li>4690k江波配置<br>
+<code>-v keepsyms=1 agdpmod=pikera -alcbeta alcid=1 npci=0x2000 igfxonln=1 -cdfon  -lilubetaall</code></li>
+</ul>
+<h4 id="启动参数说明">启动参数说明</h4>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/what-is-boot-args.html">黑苹果星球启动参数说明</a></p>
+<table>
+<thead>
+<tr>
+<th>启动参数</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-v</strong></td>
+<td>用于打开跑码模式，方便排错</td>
+<td></td>
+</tr>
+<tr>
+<td>-wegnoegpu</td>
+<td>关闭外置GPU，笔记本无法驱动核显需要关闭独显的使用</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>debug=0x100</strong></td>
+<td>打开用于发生严重错误（Kernel Panic）后禁止自动重启，将停留在出错位置，方便排错</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>keepsyms=1</strong></td>
+<td>用于辅助上一个启动参数，可以对错误原因提供更多有用的信息</td>
+<td></td>
+</tr>
+<tr>
+<td>nvda_drv=1</td>
+<td>使用 Nvidia 显卡</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>agdpmod=pikera</strong></td>
+<td>用于解决 Navi 核心的显卡启动黑屏问题，如果你是 Polaris(RX400/RX500) 或 Vega(56/64) 显卡则无需此项</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>npci=0x2000</strong></td>
+<td>X99、X299 平台以及部分 AMD 平台需要添加 npci=0x2000 或 npci=0x3000，当跑代码卡在 PCI Start Configuration 时使用</td>
+<td>Z97D3H主板不开这个，使用<code>ResetNVRAMEntry.efi</code>和<code>ToggleSipEntry.efi</code>会出现无法启动的问题</td>
+</tr>
+<tr>
+<td><strong>alcid=11</strong></td>
+<td>是 AppleALC.kext 用于驱动声卡的参数，演示机型板载 ALC1220 芯片，可使用 layout-id 11 驱动声卡，其它芯片可参考 <a target="_blank" rel="noopener" href="https://heipg.cn/drivers?drivers=Audio">AppleALC.kext</a> 提供的<a target="_blank" rel="noopener" href="https://heipg.cn/drivers/applealc-1-5-1.html#AppleALC-%E6%94%AF%E6%8C%81%E7%9A%84%E7%BC%96%E8%A7%A3%E7%A0%81%E5%99%A8">解码器支持表单和驱动更新日志</a></td>
+<td></td>
+</tr>
+<tr>
+<td>igfxonln=1</td>
+<td>解决休眠无法唤醒问题，需要配合<code>ssdt-GPRW.aml</code>或者<code>HibernationFixup.kext</code></td>
+<td></td>
+</tr>
+<tr>
+<td>no_compat_check</td>
+<td>关闭不受支持的型号兼容性检查，13.0以后版本不支持2017年以前的机型。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="AppleACL-kext相关启动参数">AppleACL.kext相关启动参数</h4>
+<table>
+<thead>
+<tr>
+<th>启动参数</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alcid = layout</td>
+<td>设置值layout-id</td>
+<td></td>
+</tr>
+<tr>
+<td>-alcbeta</td>
+<td>在不受支持的系统（通常是未发行或旧的系统）上启用AppleALC</td>
+<td></td>
+</tr>
+<tr>
+<td>-alcoff</td>
+<td>禁用自身</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="Z97D3H-4690K">Z97D3H+4690K</h4>
+<ul>
+<li>板载声卡：Realtek ALC 1150<br>
+<img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202211101204787.png" alt=""></li>
+</ul>
+<h3 id="关闭trim">关闭trim</h3>
+<p><a target="_blank" rel="noopener" href="https://hpglw.com/c439c973.html">为什么不推荐黑苹果SSD开启TRIM</a><br>
+Kernel-&gt;Quirks-&gt;SetApfsTrimTimeout：999</p>
+<h3 id="CPU仿冒">CPU仿冒</h3>
+<p>十二代酷睿仿冒十代酷睿，在 OpenCore 的 config.plist → Kernel → Emulate 添加以下内容：</p>
+<ul>
+<li>Cpuid1Data：55060A00 00000000 00000000 00000000</li>
+<li>Cpuid1Mask：FFFFFFFF 00000000 00000000 00000000</li>
+</ul>
+<h3 id="无法休眠问题">无法休眠问题</h3>
+<p>无法休眠的原因是定制USB时未将PCIe网卡设置为内置。</p>
+<p><code>Hackintoolde</code>的USB显示的接口可能与实际EFI文件的<code>USBMap.kext</code>文件不一致，可以通过导入显示实际的接口名称，再用<code>PropertyTree</code>等工具打开<code>USBMap.kext</code>可以自定义修改。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pdblogs/p/15906453.html">无法休眠</a><br>
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv15463490">手动修改USB补丁</a></p>
+<p><a target="_blank" rel="noopener" href="https://bbs.pcbeta.com/viewthread-1868935-1-1.html">睡眠重启故障：EFI中的睡眠-唤醒故障</a><br>
+<a target="_blank" rel="noopener" href="https://bbs.pcbeta.com/viewthread-1939651-1-1.html">解决休眠无法唤醒</a></p>
+<blockquote>
+<p>用<code>Hackintool</code>工具打开电源选项，将红色的<code>proximityValue</code>修改为0即可保证休眠唤醒。</p>
+</blockquote>
+<h3 id="打补丁教程">打补丁教程</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158786596">【黑苹果系列】小白教程之DSD补丁篇 | 7分钟教你优雅定制最关键的OC补丁(clover通用) - 知乎 (zhihu.com)</a></p>
+<h3 id="补丁说明">补丁说明</h3>
+<ul>
+<li>SSDT-OC-XOSI.aml 操作系统补丁，能解决OC无法引导windows。</li>
+<li>SSDT-plug.aml 加载CPU原生电源管理（开启节能四项），必须</li>
+<li><a href="https://link.zhihu.com/?target=https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html">SSDT-EC-USBX</a>（同SSDT-EC）：禁用EC（Embedded Controller）和修复USB充电问题，可选</li>
+</ul>
+<h3 id="OpenCore无法引导windows">OpenCore无法引导windows</h3>
+<p>将<code>booter-启动设置</code>里面的<code>SyncRuntimePermissions</code>勾上即可<br>
+<img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202204212014663.png" alt=""></p>
+<h3 id="安装界面显示俄文">安装界面显示俄文</h3>
+<p>选择菜单栏第三个的子一级菜单（🍎图标算第一个菜单）</p>
+<blockquote>
+<p>🍎：启动磁盘|重新启动|关机<br>
+恢复：<br>
+文件：选取语言<br>
+……</p>
+</blockquote>
+<h3 id="设置快速更改SIP">设置快速更改SIP</h3>
+<p>打开config.plist文件，前往config – Misc – Security – AllowToggleSip 勾选保存</p>
+<h3 id="双系统时间不同步">双系统时间不同步</h3>
+<p><a target="_blank" rel="noopener" href="https://www.mfpud.com/topics/975/">解决Windows 10 和macOS黑苹果双系统时间不同步</a></p>
+<p>管理员运行cmd输入</p>
+<p><code>Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</code></p>
+<h3 id="修改默认启动系统">修改默认启动系统</h3>
+<ul>
+<li><code>EFI-&gt;Misc-&gt;Security-&gt;AllowSetDefault</code> 勾上</li>
+<li>开机选择，按住<code>Ctrl+Enter</code>进入系统</li>
+</ul>
+<h3 id="修改开机系统选择等待时间">修改开机系统选择等待时间</h3>
+<p><code>Misc-&gt;Boot-&gt;Timeout</code></p>
+<h3 id="修改CPU型号">修改CPU型号</h3>
+<p><a target="_blank" rel="noopener" href="http://imacos.top/2023/01/06/opencore-cpu/">自定义CPU型号</a></p>
+<ol>
+<li>添加RestrictEvents.kext驱动到/EFI/OC/Kexts目录下,并在config.plist中启用</li>
+<li>对于 8 核或更高版本的 CPU，Apple CPU 标识符必须为 <strong>0x0F01</strong>；对于 1、2、4 或 6 核，Apple CPU 标识符必须为 <strong>0x0601</strong>。这是 OpenCore 中非原生支持的 ​​CPU 的默认设置。0x0F01及0x0601可以参考方式一的第2步,将16进制转换成10进制,以我的i3 10105为例,应该选择0x0601,转换成10进制为1537,将<strong>1537</strong>填入ProcessorType 对应项。</li>
+</ol>
+<blockquote>
+<p>8核及以上：3841<br>
+6核及以下：1537</p>
+</blockquote>
+<ol start="3">
+<li>NVRAM -&gt; 添加 -&gt; 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">revcpuname      String      Intel(R) Core(TM) i3-10105T</span><br><span class="line">revcpu          Number      1</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>重启看效果。如果不成功，操作完成后记得在OpenCore引导界选择Reset NVRAM项重置一下，如方式二操作不成功，尝试在启动参数中添<code>-revbeta revnopatch=all revcpu=1</code></li>
+</ol>
+<h3 id="修改主题默认背景">修改主题默认背景</h3>
+<p>用<code>OpenCanopy</code>软件导入可制作<code>icns</code>格式的背景主题文件。</p>
+<p>由于4K显示器用的5K（5120x2880）分辨率，所以导入的PNG最佳尺寸为：5126x2884，能尽量保持图片正常显示。</p>
+<h3 id="消除多出且无效的EFI引导项">消除多出且无效的EFI引导项</h3>
+<p><a target="_blank" rel="noopener" href="https://bbs.pcbeta.com/viewthread-1955895-1-1.html">消除OpenCore 0.8.8发行版起多出且无效的EFI引导项</a></p>
+<h3 id="如何生成有效三码">如何生成有效三码</h3>
+<p>需要显示不在保障内，才是有效的三码。<br>
+<a target="_blank" rel="noopener" href="https://checkcoverage.apple.com/?locale=zh_CN">三码查询</a></p>
+<h3 id="查看当前EFI版本">查看当前EFI版本</h3>
+<p>使用 Hackintool 工具，直接打开就能看到，如下图位置</p>
+<p>Hackintool 下载：<a target="_blank" rel="noopener" href="https://www.mfpud.com/tools/hackintool/">https://www.mfpud.com/tools/hackintool/</a></p>
+<p><img src="https://cdn.mfpud.com/static/2022/06/1654619962-9edd5ecd8c3a9e1.png" alt=""></p>
+<h3 id="仿冒显卡ID">仿冒显卡ID</h3>
+<p><a target="_blank" rel="noopener" href="https://www.gaofumei.net/mac-os-x/11181.html">6650xt</a></p>
+<h3 id="使用USBToolBox定制USB驱动">使用USBToolBox定制USB驱动</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.imacosx.cn/6875.html">黑果魏叔教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/customize-usb-port-windows.html">黑苹果星球教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv15463490">手动修改USB补丁</a></li>
+</ul>
+<p>由于苹果系统只支持15个USB口，而同一个物理USB接口的2.0和3.0分别各占一个逻辑端口位置，所以需要优先保证USB3.0和必须2.0生效，具体可以按如下步骤操作</p>
+<ul>
+<li>先在windows环境下用USBToolBox设置USB关联，用U盘逐一连接系统，扫描所有USB口。</li>
+<li>设置里面关闭USB关联</li>
+<li>删除不够支持的USB2.0逻辑端口，保证一个USB控制器只有15个逻辑端口</li>
+<li>生成<code>UBSMap.kext</code></li>
+</ul>
+<p>此外，也可以用USB3.0U盘插所有的接口，这样主机3.0接口如果插了2.0接口，就会不占用逻辑端口。</p>
+<h3 id="关闭硬盘自动挂载">关闭硬盘自动挂载</h3>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/526975ef197a">mac OS 防止开机自动挂载磁盘/USB等外设 - 简书 (jianshu.com)</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38202733/article/details/109631753">MacOS下禁止开机自动挂载分区 /etc/fstab</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/fstab</span><br><span class="line">UUID=71507FAA-2D93-4DFF-8AD2-19341D71641C none ntfs rw,noauto</span><br><span class="line">UUID=71507FAA-2D93-4DFF-8AD2-19341D71641C none ntfs noauto 0 0</span><br><span class="line">LABEL=C none ntfs noauto 0 0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要填写的UUID是分区的卷🆔，可以通过Mac系统下系统信息内置应用查看或者windows下DiskGenius查看。</p>
+</blockquote>
+<h3 id="关闭开机界面多余显示">关闭开机界面多余显示</h3>
+<p><img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202304261401424.png" alt=""></p>
+<h3 id="关闭开机OC版本号提示">关闭开机OC版本号提示</h3>
+<p>Misc-&gt;Security-&gt;ExposeSensitiveData：从6改为3<br>
+<img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202304270024797.png" alt=""></p>
+<h3 id="系统无法提示更新">系统无法提示更新</h3>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/macos-monterey-delta-update-fixup.html">macOS Big Sur/Monterey 12.0 无法接收到系统更新推送的解决方法</a></p>
+<h3 id="PE系统">PE系统</h3>
+<p><a target="_blank" rel="noopener" href="https://www.mfpud.com/tools/wepe/">PE系统</a></p>
+<h3 id="关闭系统选择界面">关闭系统选择界面</h3>
+<p>Misc–boot–ShowPicker 设置为no</p>
+<h3 id="解决图标一大一下">解决图标一大一下</h3>
+<p><a target="_blank" rel="noopener" href="https://macx.top/17564.html">黑苹果开机图标不统一，一大一小，解决办法</a></p>
+<h2 id="第七章-macOS磁盘管理工具">第七章 macOS磁盘管理工具</h2>
+<h3 id="磁盘划分">磁盘划分</h3>
+<ul>
+<li>
+<p>建议先用DiskGenius划分好大小，</p>
+</li>
+<li>
+<p>然后再用macOS磁盘工具<strong>分区</strong>进行格式化，此时会默认使用所有闲置的空间</p>
+</li>
+<li>
+<p>分区-&gt;选中上一步格式化的分区-&gt;点击+ -&gt;选择添加分区-&gt;可以缩小分区得到最终需要的区间大小-&gt;应用。</p>
+</li>
+</ul>
+<h3 id="磁盘空间缩小">磁盘空间缩小</h3>
+<p><strong>尽量在恢复模式下调整系统磁盘空间大小</strong></p>
+<p>选择宗卷-&gt;分区-&gt;输入指定大小-&gt;应用。</p>
+<h3 id="恢复系统">恢复系统</h3>
+<p><a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/guide/disk-utility/dskutl14078/mac">在 Mac 上使用“磁盘工具”将磁盘映像恢复到磁盘</a></p>
+<ul>
+<li>将当前系统拷贝到其他硬盘当中，比如移动固态硬盘。</li>
+<li>这种方法类似于windows中用DiskGenius进行系统迁移功能</li>
+</ul>
+<h2 id="第八章-配置推荐">第八章 配置推荐</h2>
+<h3 id="硬盘">硬盘</h3>
+<p><a target="_blank" rel="noopener" href="https://macoshome.com/hackintosh/hcourse/2476.html">黑苹果装机避坑指南之SSD选择</a></p>
+<h2 id="第九章-白苹果">第九章 白苹果</h2>
+<p><a target="_blank" rel="noopener" href="https://xungejiang.com/2021/11/24/mac-external-disk/">m1 mac 将系统装入外置硬盘</a><br>
+如果买白苹果，建议直接购买Macm ini，内存尽量往大选，硬盘尽量往小选，比如256G，然后购买一个M2固态，和一个雷电4转M.2移动硬盘盒，作为启动盘，官方2T硬盘贵6000，自己选外置硬盘只需要1000多即可。</p>
+<h3 id="关闭其他用户">关闭其他用户</h3>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44361892/article/details/105942296">关闭其他用户</a><br>
+终端输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE</span><br></pre></td></tr></table></figure>
+<h3 id="关闭开盖自动开机">关闭开盖自动开机</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/146624376">MacBook如何取消开盖自动开机</a></p>
+<p>关闭：<code>sudo nvram AutoBoot=%0</code></p>
+<p>恢复：<code>sudo nvram AutoBoot=%03</code></p>
+<h3 id="时间机器">时间机器</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/508448087">时间机器容量多大？</a></p>
+<p>和系统盘相同容量可以备份127天。</p>
+<img src="https://pic3.zhimg.com/80/v2-6cfba00faf70dce8afb3d6a44f0de656_1440w.webp" style="zoom:80%;" />
+<h2 id="第十章-补丁介绍">第十章 补丁介绍</h2>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Bb4y1o7tx/?vd_source=adb0919246a7e65560f78fa73c6c655a">黑苹果教程第7期：DSDT提取和常见SSDT功能介绍</a></p>
+<img src="https://raw.githubusercontent.com/ConanSteve/images/master/blog/202305272126962.png" style="zoom: 50%;" />
+<p><strong>提取步骤</strong></p>
+<blockquote>
+<ul>
+<li>运行SSDTTime.bat</li>
+<li>P</li>
+<li>1-7(2是台式机，2是笔记本，二选一即可)</li>
+<li>q</li>
+</ul>
+</blockquote>
+<h2 id="Others">Others</h2>
+<h3 id="MacOS-11">MacOS 11</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">smbios.reflectHost= &quot;TRUE&quot;</span><br><span class="line">hw.model = &quot;MacBookPro16,1&quot;</span><br><span class="line">board-id=&quot;Mac-E1008331FDC96864&quot;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangchao_cn/article/details/109755360">vm安装11.15教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://heipg.cn/tutorial/basic-install-hackintosh-walkthrough.html">教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/342b322e3841">这可能是对“小白”最友好的黑苹果安装教程（Catalina 10.15.5 安装记录）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Su_Yi/article/details/93773558">关于黑苹果的EFI该如何的配置和Config Configuration工具的使用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/22b5e9db1780">黑苹果安装过程（10.13.617G7024）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.daliansky.net/macOS-BigSur-11.5.2-20G95-Release-version-with-OC-0.7.1-and-Clover-5138-and-PE-original-image.html#more">黑果小兵教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.daliansky.net/categories/%E4%B8%8B%E8%BD%BD/">黑果小兵镜像</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.apple114.com/pages/macos/">系统下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.daliansky.net/Hackintosh-long-term-maintenance-model-checklist.html">黑果小兵机型efi清单</a></p>
+<p>镜像损坏</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig en0 down</span><br><span class="line">date 022208102015.20</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/support/articles/000023781/graphics.html">如何确定英特尔®显卡支持的最大分辨率</a></p>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>MacOS情况下尽量不要将机械硬盘初始化为APFS，容易产生碎片和数据丢失，应该使用HFS+格式。参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/440659402">机械硬盘有必要采用apfs的文件系统吗？</a></li>
+</ul>
+<h2 id="Reference">Reference</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/460054354">黑苹果卡代码篇一：黑苹果安装过程中常见卡代码问题，解决方案！</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/476272938">黑苹果卡代码篇二：常见的卡代码问题，解决方案！</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/476275730">黑苹果卡代码篇三：常见卡代码问题，满满的干货！</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/476276928">黑苹果安装卡代码篇四：常见卡代码问题解决办法，值得收藏！</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/485666871">黑苹果卡代码篇五：全网最全的黑苹果卡代码解决办法！</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/485666818">黑苹果卡代码篇六：最后的卡代码分享，六十种不同卡代码解决办法，完结篇！</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://conansteve.github.io">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Mac/2022-04-01-hackintosh/">http://conansteve.github.io/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Mac/2022-04-01-hackintosh/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mac-tools/">mac tools</a></div><div class="post_share"><div class="social-share" data-image="/img/art/4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/08/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/pymysql/" title="pymysql的基本用法"><img class="cover" src="/img/matery/8.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">pymysql的基本用法</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/01/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/Tools/BlogWebsite/2022-04-01-build-blog-by-hexo/" title="通过hexo搭建个人博客"><img class="cover" src="/img/matery/7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">通过hexo搭建个人博客</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">黑苹果安装教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-number">1.2.</span> <span class="toc-text">第一章 工具下载地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenCore-Configurator"><span class="toc-number">1.2.1.</span> <span class="toc-text">OpenCore Configurator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OC-Gen-X"><span class="toc-number">1.2.2.</span> <span class="toc-text">OC Gen-X</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-OpenCore-EFI%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text">第二章 OpenCore EFI文件生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">第三章 安装教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%81%A2%E5%A4%8D%E7%89%88"><span class="toc-number">1.4.1.</span> <span class="toc-text">网络恢复版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#U%E7%9B%98%E5%88%BB%E5%BD%95%E7%89%88%E6%95%99%E7%A8%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">U盘刻录版教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E4%B8%AA%E4%BA%BA%E5%AE%89%E8%A3%85%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text">第四章 个人安装实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Z97D3H-i5-4690k-GTX970"><span class="toc-number">1.5.1.</span> <span class="toc-text">Z97D3H + i5 4690k + GTX970</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E5%AF%B9%E6%AF%94"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">CPU对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BIOS%E8%AE%BE%E7%BD%AEBIOS%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">BIOS设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%A0%E6%99%AE%E6%88%9866G1Pro%E5%8F%8C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.5.2.</span> <span class="toc-text">惠普战66G1Pro双系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-OpenCore-Configurator"><span class="toc-number">1.6.</span> <span class="toc-text">第五章 OpenCore Configurator</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-number">1.6.1.</span> <span class="toc-text">修改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%95%B0%E5%97%A6%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text">关闭啰嗦模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E7%A3%81%E7%9B%98"><span class="toc-number">1.6.3.</span> <span class="toc-text">切换默认启动磁盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.6.4.</span> <span class="toc-text">声卡设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.6.5.</span> <span class="toc-text">显卡设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0UEFI%E5%BC%95%E5%AF%BC%E9%A1%B9"><span class="toc-number">1.6.6.</span> <span class="toc-text">添加UEFI引导项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.</span> <span class="toc-text">第六章 系统优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.1.</span> <span class="toc-text">启动参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">启动参数说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AppleACL-kext%E7%9B%B8%E5%85%B3%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">AppleACL.kext相关启动参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Z97D3H-4690K"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">Z97D3H+4690K</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%ADtrim"><span class="toc-number">1.7.2.</span> <span class="toc-text">关闭trim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E4%BB%BF%E5%86%92"><span class="toc-number">1.7.3.</span> <span class="toc-text">CPU仿冒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.4.</span> <span class="toc-text">无法休眠问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E8%A1%A5%E4%B8%81%E6%95%99%E7%A8%8B"><span class="toc-number">1.7.5.</span> <span class="toc-text">打补丁教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E4%B8%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.6.</span> <span class="toc-text">补丁说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenCore%E6%97%A0%E6%B3%95%E5%BC%95%E5%AF%BCwindows"><span class="toc-number">1.7.7.</span> <span class="toc-text">OpenCore无法引导windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E4%BF%84%E6%96%87"><span class="toc-number">1.7.8.</span> <span class="toc-text">安装界面显示俄文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%BF%AB%E9%80%9F%E6%9B%B4%E6%94%B9SIP"><span class="toc-number">1.7.9.</span> <span class="toc-text">设置快速更改SIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5"><span class="toc-number">1.7.10.</span> <span class="toc-text">双系统时间不同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.11.</span> <span class="toc-text">修改默认启动系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%BC%80%E6%9C%BA%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4"><span class="toc-number">1.7.12.</span> <span class="toc-text">修改开机系统选择等待时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9CPU%E5%9E%8B%E5%8F%B7"><span class="toc-number">1.7.13.</span> <span class="toc-text">修改CPU型号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF"><span class="toc-number">1.7.14.</span> <span class="toc-text">修改主题默认背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%A4%9A%E5%87%BA%E4%B8%94%E6%97%A0%E6%95%88%E7%9A%84EFI%E5%BC%95%E5%AF%BC%E9%A1%B9"><span class="toc-number">1.7.15.</span> <span class="toc-text">消除多出且无效的EFI引导项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E6%9C%89%E6%95%88%E4%B8%89%E7%A0%81"><span class="toc-number">1.7.16.</span> <span class="toc-text">如何生成有效三码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8DEFI%E7%89%88%E6%9C%AC"><span class="toc-number">1.7.17.</span> <span class="toc-text">查看当前EFI版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BF%E5%86%92%E6%98%BE%E5%8D%A1ID"><span class="toc-number">1.7.18.</span> <span class="toc-text">仿冒显卡ID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8USBToolBox%E5%AE%9A%E5%88%B6USB%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.7.19.</span> <span class="toc-text">使用USBToolBox定制USB驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E7%A1%AC%E7%9B%98%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">1.7.20.</span> <span class="toc-text">关闭硬盘自动挂载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E5%A4%9A%E4%BD%99%E6%98%BE%E7%A4%BA"><span class="toc-number">1.7.21.</span> <span class="toc-text">关闭开机界面多余显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%BC%80%E6%9C%BAOC%E7%89%88%E6%9C%AC%E5%8F%B7%E6%8F%90%E7%A4%BA"><span class="toc-number">1.7.22.</span> <span class="toc-text">关闭开机OC版本号提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%8F%90%E7%A4%BA%E6%9B%B4%E6%96%B0"><span class="toc-number">1.7.23.</span> <span class="toc-text">系统无法提示更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.24.</span> <span class="toc-text">PE系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%95%8C%E9%9D%A2"><span class="toc-number">1.7.25.</span> <span class="toc-text">关闭系统选择界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%9B%BE%E6%A0%87%E4%B8%80%E5%A4%A7%E4%B8%80%E4%B8%8B"><span class="toc-number">1.7.26.</span> <span class="toc-text">解决图标一大一下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-macOS%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.8.</span> <span class="toc-text">第七章 macOS磁盘管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%92%E5%88%86"><span class="toc-number">1.8.1.</span> <span class="toc-text">磁盘划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E7%BC%A9%E5%B0%8F"><span class="toc-number">1.8.2.</span> <span class="toc-text">磁盘空间缩小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.3.</span> <span class="toc-text">恢复系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%85%8D%E7%BD%AE%E6%8E%A8%E8%8D%90"><span class="toc-number">1.9.</span> <span class="toc-text">第八章 配置推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-number">1.9.1.</span> <span class="toc-text">硬盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%99%BD%E8%8B%B9%E6%9E%9C"><span class="toc-number">1.10.</span> <span class="toc-text">第九章 白苹果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7"><span class="toc-number">1.10.1.</span> <span class="toc-text">关闭其他用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%BC%80%E7%9B%96%E8%87%AA%E5%8A%A8%E5%BC%80%E6%9C%BA"><span class="toc-number">1.10.2.</span> <span class="toc-text">关闭开盖自动开机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A8"><span class="toc-number">1.10.3.</span> <span class="toc-text">时间机器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E8%A1%A5%E4%B8%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.11.</span> <span class="toc-text">第十章 补丁介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Others"><span class="toc-number">1.12.</span> <span class="toc-text">Others</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS-11"><span class="toc-number">1.12.1.</span> <span class="toc-text">MacOS 11</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.13.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.14.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/art/4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 陌上人如玉</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's time machine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '36de2d0c9d5f5de8c986',
+      clientSecret: 'b1be6c2e8a1b6c8266ebbc68e238c4e7b19ab8a7',
+      repo: 'gitalk',
+      owner: 'ConanSteve',
+      admin: ['ConanSteve'],
+      id: '1b8e25266defd1f0a2f558ea5d706359',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.textContent= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="002SPn6X1xHLfO" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="false" lrc-type="0"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
