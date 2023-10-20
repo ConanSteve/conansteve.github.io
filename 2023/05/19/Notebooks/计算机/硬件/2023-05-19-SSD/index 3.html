@@ -1,0 +1,774 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>固态硬盘 | 陌上人如玉的时光机</title><meta name="author" content="陌上人如玉"><meta name="copyright" content="陌上人如玉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 硬盘科普，M.2，PCI-E，NVMe 傻傻分不清 固态硬盘（ssd）中的原厂颗粒，白片，自封片是什么？  物理接口(相当于通讯中的电，光口)    SATA：专门跑SATA通道的那个物理接口 M.2：专门跑PCI-E通道的那个物理接口    通道（相当于通讯协议中的应用层以下所有层）    PCI-E通道：速率丰富，适合各种不同速率要求的硬件，上至显卡，下至声卡，最新推出标准如PCI-E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="固态硬盘">
+<meta property="og:url" content="http://conansteve.github.io/2023/05/19/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-19-SSD/index.html">
+<meta property="og:site_name" content="陌上人如玉的时光机">
+<meta property="og:description" content="前言 硬盘科普，M.2，PCI-E，NVMe 傻傻分不清 固态硬盘（ssd）中的原厂颗粒，白片，自封片是什么？  物理接口(相当于通讯中的电，光口)    SATA：专门跑SATA通道的那个物理接口 M.2：专门跑PCI-E通道的那个物理接口    通道（相当于通讯协议中的应用层以下所有层）    PCI-E通道：速率丰富，适合各种不同速率要求的硬件，上至显卡，下至声卡，最新推出标准如PCI-E">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://conansteve.github.io/img/matery/1.png">
+<meta property="article:published_time" content="2023-05-19T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-15T10:09:51.000Z">
+<meta property="article:author" content="陌上人如玉">
+<meta property="article:tag" content="硬件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://conansteve.github.io/img/matery/1.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://conansteve.github.io/2023/05/19/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-19-SSD/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '固态硬盘',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-15 18:09:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_3298638_9mmiq161yi6.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1140697_dxory92pb0h.js"><link rel="stylesheet" href="/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">118</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">23</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/matery/1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="陌上人如玉的时光机"><span class="site-name">陌上人如玉的时光机</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/gallery"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">固态硬盘</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-19T10:00:00.000Z" title="Created 2023-05-19 18:00:00">2023-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-09-15T10:09:51.000Z" title="Updated 2023-09-15 18:09:51">2023-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>6min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="固态硬盘"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言">前言</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/396745362?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_oi=1087686085076647936&amp;utm_psn=1643186118911741952&amp;utm_source=wechat_session%09">硬盘科普，M.2，PCI-E，NVMe 傻傻分不清</a><br>
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv16268022">固态硬盘（ssd）中的原厂颗粒，白片，自封片是什么？</a></p>
+<ol>
+<li>物理接口(相当于通讯中的电，光口)</li>
+</ol>
+<blockquote>
+<ul>
+<li>SATA：专门跑SATA通道的那个物理接口</li>
+<li>M.2：专门跑PCI-E通道的那个物理接口</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>通道（相当于通讯协议中的应用层以下所有层）</li>
+</ol>
+<blockquote>
+<ul>
+<li>PCI-E通道：速率丰富，适合各种不同速率要求的硬件，上至显卡，下至声卡，最新推出标准如PCI-E 5.0，同一标准下，可通过物理接口划分不同速率，如PCI-E X1,X4,X8,X16,X32,速率依次上升。</li>
+<li>SATA通道：以前用于接硬盘，光驱（是吗？）</li>
+<li>SAS通道：企业级别硬盘用的通道</li>
+<li>FC通道：光纤通道</li>
+</ul>
+</blockquote>
+<ol start="3">
+<li>协议</li>
+</ol>
+<blockquote>
+<ul>
+<li>IDE协议：机械硬盘时代，用于数据操作，传输的协议</li>
+<li>AHCI协议：仍然是机械硬盘时代的主流数据传输协议，例如使用SATA通道。优化后的，效率相比IDE提升10-30%</li>
+<li>NVMe协议: 由于机械硬盘和固态硬盘的工作模式发生巨大变化，需要一种全新的针对固态的传输层协议，NVMe因运而生，据说就是很牛皮呐，各种新特性，设计是跑在PCI-E通道上的。当然固态硬盘也是可以在AHCI协议上正常工作的。总之NVMe是个牛皮的东西，像在数据中心，据查有个NVMe控制器可以充分利用各个服务器自带的硬盘，实现统一编排，共享存储，废盘利用。</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20448164">硬盘格式对比</a></p>
+<ul>
+<li>APFS：优点：可靠，安全。对配合苹果电脑使用友好。缺点：不兼容Windows系统。</li>
+<li>NTFS：优点：采用日志式，稳定安全，Windows系统使用友好，是主流格式。缺点：苹果电脑只支持读，想要写需要买驱动软件。</li>
+<li>ExFAT：优点：对Windows和MAC格式都兼容，对闪存SSD硬盘优化更好。缺点：机械硬盘用这格式数据容易丢。</li>
+</ul>
+<blockquote>
+<p>数据安全可靠度：APFS=NTFS &gt; ExFAT<br>
+数据传输便捷度：ExFAT &gt; NTFS &gt; APFS</p>
+</blockquote>
+<h2 id="购买建议">购买建议</h2>
+<h3 id="颗粒">颗粒</h3>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/166162142">这些硬盘不要买！2023那些不推荐的固态硬盘</a></p>
+<p><img src="https://pic1.zhimg.com/v2-114152436ba049d8625b2fdc06596ac4_b.webp?consumer=ZHI_MENG" alt=""></p>
+<p><img src="https://pic3.zhimg.com/v2-0b5fdb824b9fc7c6407ef9f224f56752_b.webp?consumer=ZHI_MENG" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54722345">固态硬盘里常说的黑片白片是什么？	</a><br>
+<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/493919707">为何要选择原厂出品的固态硬盘</a><br>
+<img src="https://picx.zhimg.com/80/v2-78f266c6054bfd2e25bb7215ad28aff6_1440w.webp?source=1940ef5c" alt="颗粒厂家"></p>
+<p>能制造颗粒厂家：<strong>三星</strong>、Intel、<strong>西部数据</strong>、<strong>镁光（英睿达）</strong>、<strong>东芝（铠侠）</strong>、海力士、<strong>长江存储（致钛）</strong><br>
+消费级SSD品牌（操作系统盘强推）：<strong>三星</strong>、<strong>海力士</strong>、<strong>西部数据</strong>、<strong>铠侠</strong>、<strong>长江存储</strong>。</p>
+<blockquote>
+<p>原片：三星、Intel、金士顿、西部数据、大多数英睿达、闪迪、东芝、浦科特、希捷、建兴、部分影驰</p>
+<p>白片：阿斯加特、部分英睿达、光威、部分惠普、部分威刚、金百达、金盛维、海康威视、部分台电、铭瑄、ShineDisk(不是闪迪)、宇瞻、部分影驰、部分金士顿</p>
+<p>黑片：七彩虹、金泰克、金邦、士必得、部分台电、部分联想</p>
+</blockquote>
+<h2 id="测速软件">测速软件</h2>
+<p>Mac：AmorphousDiskMark</p>
+<p>Windows：ASSD-Benchmark、DiskMark</p>
+<p>Linux：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1cf0e2e6dd6f">在 Linux 上检测硬盘速度</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install hdparm</span><br><span class="line">hdparm -tT /dev/sda</span><br></pre></td></tr></table></figure>
+<h3 id="缓存">缓存</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/557898991?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_oi=1087686085076647936&amp;utm_psn=1645589769504788480&amp;utm_source=wechat_session">实测丨SSD固态硬盘推荐/值得购买的型号有哪些，真实性能测试</a></p>
+<p>固态硬盘有两个比较重要的缓存概念，一种是dram缓存，一种是SLC模拟缓存。两种概念直接影响固态硬盘的性能表现</p>
+<p><strong>DRAM缓存</strong></p>
+<p>FTL闪存映射表好比固态硬盘数据的目录，dram缓存就是FTL的容器，那么在调取数据时通过FTL就可以很快的读取数据，写入数据也可以快速的安排新的目录页码。较好的固态硬盘基本都会安排独立的DRAM缓存。</p>
+<p><strong>HMB</strong></p>
+<p>有独立dram自然就有无dram技术，HMB技术就是调用电脑内存，将FTL存入内存中，这样的好处是省钱，但是性能上饶了一圈，自然会略差一点。</p>
+<p><strong>SLC模拟缓存</strong></p>
+<p>很多看不懂，我就这么说，SLC缓存越大越好，你们看到的什么7000、6000字样的数据，都是SLC缓存内的数据读写。那么只要SLC缓存够大，能够保持高速读写的数据也就越大，这个很好理解。SLC缓存虽然提高了固态的性能，但是固态硬盘会在空闲时间将SLC缓存内的数据搬运，以施放SLC空间，<strong>这也就导致了SLC缓存的存在降低了固态硬盘的寿命，是把双刃剑</strong>。</p>
+<h2 id="各版本PCIe吞吐速度：">各版本PCIe吞吐速度：</h2>
+<table>
+<thead>
+<tr>
+<th>PCIe版本</th>
+<th>行代码</th>
+<th>传输速率</th>
+<th>x1</th>
+<th>x2</th>
+<th>x4</th>
+<th>x8</th>
+<th>x16</th>
+<th>发布时间</th>
+<th>首次商用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>8b/10b</td>
+<td>2.5GT/s</td>
+<td>250MB/s</td>
+<td>500MB/s</td>
+<td>1GB/s</td>
+<td>2GB/s</td>
+<td>2GB/s</td>
+<td>2003</td>
+<td></td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>8b/10b</td>
+<td>5GT/s</td>
+<td>500MB/s</td>
+<td>1GB/s</td>
+<td>2GB/s</td>
+<td>4GB/s</td>
+<td>8GB/s</td>
+<td>2007</td>
+<td></td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>128b/130b</td>
+<td>8GT/s</td>
+<td>1GB/s</td>
+<td>2GB/s</td>
+<td>4GB/s</td>
+<td>8GB/s</td>
+<td>16GB/s</td>
+<td>2010</td>
+<td></td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>128b/130b</td>
+<td>16GT/s</td>
+<td>2GB/s</td>
+<td>4GB/s</td>
+<td>8GB/s</td>
+<td>16GB/s</td>
+<td>32GB/s</td>
+<td>2017</td>
+<td>2019</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>128b/130b</td>
+<td>32GT/s</td>
+<td>4GB/s</td>
+<td>8GB/s</td>
+<td>16GB/s</td>
+<td>32GB/s</td>
+<td>64GB/s</td>
+<td>2019</td>
+<td></td>
+</tr>
+<tr>
+<td>6.0</td>
+<td></td>
+<td></td>
+<td>8GB/s</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2022</td>
+<td></td>
+</tr>
+<tr>
+<td>7.0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="硬盘信息">硬盘信息</h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>接口</th>
+<th>通道</th>
+<th>容量</th>
+<th>缓存</th>
+<th>颗粒或转速</th>
+<th>TBW</th>
+<th>温度</th>
+<th>顺序读M/s</th>
+<th>顺序写M/s</th>
+<th>随机读4K IOPS</th>
+<th>随机写4K IOPS</th>
+<th>macOS实测读 M/s</th>
+<th>macOS实测写M/s</th>
+<th>windows实测写读M/s</th>
+<th>windows实测写速度 M/s</th>
+<th>4KQ1T1读 IOPS</th>
+<th>4KQ1T1写IOPS</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATA固态：</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>三星860QVO</td>
+<td>SATA3</td>
+<td>SATA3</td>
+<td>1T</td>
+<td>1G</td>
+<td>三星QLC</td>
+<td>360T</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>553</td>
+<td>516</td>
+<td>23</td>
+<td>84</td>
+<td></td>
+</tr>
+<tr>
+<td>金士顿V300</td>
+<td>SATA3</td>
+<td>SATA3</td>
+<td>240G</td>
+<td>无</td>
+<td>东芝MLC</td>
+<td></td>
+<td></td>
+<td>191</td>
+<td>142</td>
+<td></td>
+<td></td>
+<td>485</td>
+<td>134</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/779349.html">https://item.jd.com/779349.html</a></td>
+</tr>
+<tr>
+<td>梵想S100Pro</td>
+<td>SATA3</td>
+<td>SATA3</td>
+<td>1T</td>
+<td>无</td>
+<td>长江TLC</td>
+<td>600T</td>
+<td>48</td>
+<td>560</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100040499476.html">https://item.jd.com/100040499476.html</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Nvme固态：</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>金士顿 NV1</td>
+<td>M2</td>
+<td>PCIe3x4</td>
+<td>1T</td>
+<td>无</td>
+<td>QLC</td>
+<td>240T</td>
+<td></td>
+<td>2100</td>
+<td>1700</td>
+<td></td>
+<td></td>
+<td>740 x2</td>
+<td>708 x2</td>
+<td>1356 x4</td>
+<td>1281 x4</td>
+<td>45 10.8K</td>
+<td>106 48K</td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100020082478.html">https://item.jd.com/100020082478.html</a></td>
+</tr>
+<tr>
+<td>西数SN570</td>
+<td>M2</td>
+<td>PCIe3x4</td>
+<td>1T</td>
+<td>无</td>
+<td>TLC</td>
+<td>600T</td>
+<td></td>
+<td>3500</td>
+<td>3000</td>
+<td>460K</td>
+<td>450K</td>
+<td>1436 x4 792 x2</td>
+<td>1288 x4 782 x2</td>
+<td>1396 x4</td>
+<td>1294 x4</td>
+<td>34</td>
+<td>105</td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100028004984.html">https://item.jd.com/100028004984.html</a></td>
+</tr>
+<tr>
+<td>西数SN850X</td>
+<td>M2</td>
+<td>PCIe4x4</td>
+<td>1T</td>
+<td>1G</td>
+<td>TLC</td>
+<td>600T</td>
+<td></td>
+<td>7300</td>
+<td>6300</td>
+<td>800K</td>
+<td>1200K</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100032374669.html">https://item.jd.com/100032374669.html</a></td>
+</tr>
+<tr>
+<td>西数SN850X</td>
+<td>M2</td>
+<td>PCIe4x4</td>
+<td>2T</td>
+<td>2G</td>
+<td>TLC</td>
+<td>1200T</td>
+<td></td>
+<td>7300</td>
+<td>6600</td>
+<td>1100K</td>
+<td>1100K</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>海力士P44Pro</td>
+<td>M2</td>
+<td>PCIe4x4</td>
+<td>1T</td>
+<td>1G</td>
+<td>TLC</td>
+<td>750T</td>
+<td></td>
+<td>7000</td>
+<td>6500</td>
+<td>1400K</td>
+<td>1300K</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100044462459.html">https://item.jd.com/100044462459.html</a></td>
+</tr>
+<tr>
+<td>海力士P44Pro</td>
+<td>M2</td>
+<td>PCIe4x4</td>
+<td>2T</td>
+<td>2G</td>
+<td>TLC</td>
+<td>1200T</td>
+<td></td>
+<td>7000</td>
+<td>6500</td>
+<td>1400K</td>
+<td>1300K</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100044462459.html">https://item.jd.com/100044462459.html</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>机械硬盘：</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>希捷移动1ST2000LM003</td>
+<td>USB3.0</td>
+<td>SATA</td>
+<td>2T</td>
+<td></td>
+<td>5400</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>118</td>
+<td>115</td>
+<td>122</td>
+<td>128</td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/1021900.html">https://item.jd.com/1021900.html</a></td>
+</tr>
+<tr>
+<td>西部数据WDC WD40EZAZ</td>
+<td>SATA3</td>
+<td>SATA3</td>
+<td>4T</td>
+<td>256M</td>
+<td>5400</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>487</td>
+<td>139</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/100010508835.html">https://item.jd.com/100010508835.html</a></td>
+</tr>
+<tr>
+<td>希捷ST2000DM001</td>
+<td>SATA3</td>
+<td>SATA3</td>
+<td>4T</td>
+<td></td>
+<td>7200</td>
+<td></td>
+<td></td>
+<td>210</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>205</td>
+<td>161</td>
+<td>0.39</td>
+<td>1.01</td>
+<td><a target="_blank" rel="noopener" href="https://item.jd.com/1040024.html">https://item.jd.com/1040024.html</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>顺序读写是读写大文件<br>
+4K是指随机读写4kb小文件<br>
+IOPS是指每秒妙访问IO次数。数值和读写小文件相关。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611768153">深入浅出SSD：一文读懂顺序读写、随机读写、4K读写、IOPS值等，值得一读的科普文</a></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/477887/1684498025995-211b7788-110f-42a4-8a9a-521125c6a7f0.png#averageHue=%23c4d3e6&amp;clientId=u273813a2-e954-4&amp;from=paste&amp;id=u2604855e&amp;originHeight=337&amp;originWidth=720&amp;originalType=url&amp;ratio=1.5&amp;rotation=0&amp;showTitle=false&amp;size=189517&amp;status=done&amp;style=none&amp;taskId=uafcc736b-ee12-487b-b742-66fa91859cc&amp;title=" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/477887/1684498026677-9248f76d-7a73-4373-b0b5-ba340fe24008.png#averageHue=%23182834&amp;clientId=u273813a2-e954-4&amp;from=paste&amp;id=u2eb183b2&amp;originHeight=960&amp;originWidth=742&amp;originalType=url&amp;ratio=1.5&amp;rotation=0&amp;showTitle=false&amp;size=751074&amp;status=done&amp;style=none&amp;taskId=u6b0038ef-dee9-40d3-8d99-21c62d431a2&amp;title=" alt="image.png"></p>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158787199?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_oi=1087686085076647936&amp;utm_psn=1643061154300534784&amp;utm_source=wechat_session">把 macOS 装在移动硬盘或U盘里</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/464501973">然天一百盘天梯图</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://conansteve.github.io">陌上人如玉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://conansteve.github.io/2023/05/19/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-19-SSD/">http://conansteve.github.io/2023/05/19/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-19-SSD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a></div><div class="post_share"><div class="social-share" data-image="/img/matery/1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/21/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%BD%AF%E4%BB%B6/2023-05-21-%E5%A8%81%E5%8A%9B%E5%90%8C%E6%AD%A5/" title="威力同步"><img class="cover" src="/img/art/4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">威力同步</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/19/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/2023-03-10-labuladong%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" title="labuladong算法"><img class="cover" src="/img/art/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">labuladong算法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/05/26/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-26-%E8%A3%85%E6%9C%BA/" title="台式机装机"><img class="cover" src="/img/matery/4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">台式机装机</div></div></a></div><div><a href="/2023/05/26/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-05-26-%E4%B8%BB%E6%9D%BF/" title="主板和CPU的选择"><img class="cover" src="/img/art/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">主板和CPU的选择</div></div></a></div><div><a href="/2023/09/21/Notebooks/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%A1%AC%E4%BB%B6/2023-09-21-%E5%A4%96%E8%AE%BE/" title="U盘和TF卡"><img class="cover" src="/img/art/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-21</div><div class="title">U盘和TF卡</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%BB%BA%E8%AE%AE"><span class="toc-number">2.</span> <span class="toc-text">购买建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%97%E7%B2%92"><span class="toc-number">2.1.</span> <span class="toc-text">颗粒</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%80%9F%E8%BD%AF%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">测速软件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">3.1.</span> <span class="toc-text">缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%89%88%E6%9C%ACPCIe%E5%90%9E%E5%90%90%E9%80%9F%E5%BA%A6%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">各版本PCIe吞吐速度：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E4%BF%A1%E6%81%AF"><span class="toc-number">5.</span> <span class="toc-text">硬盘信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/matery/1.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 陌上人如玉</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi! Welcome to ConanSteve's time machine!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '36de2d0c9d5f5de8c986',
+      clientSecret: 'b1be6c2e8a1b6c8266ebbc68e238c4e7b19ab8a7',
+      repo: 'gitalk',
+      owner: 'ConanSteve',
+      admin: ['ConanSteve'],
+      id: '0e46c39e80e1098c2cf94d69a4ecd520',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.textContent= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="002SPn6X1xHLfO" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="false" lrc-type="0"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
